@@ -1,0 +1,39 @@
+<div class="container page-container">
+	<h2 class="head">Memes:</h2>
+  <h4 class="subhead">A wise man once said, "Kachiga".</h4>
+
+  <div class="tasks-page page-wrapper">
+
+    <div class="spacing">
+    </div>
+    <div class="content-column">
+      <tasks-form></tasks-form>
+      <div class="tasks-wrapper">
+        <div *ngFor="let task of tasks | async" class="task-wrapper closeable cl">
+          <div class="task close-button">
+            <p class="close-button">{{task.title}}</p><i class="material-icons close-button">more_horiz</i>
+          </div>
+          <div class="task-info-wrapper">
+            <div class="task-info">
+              <p class="due">Due: July 8, 2017</p>
+              <p class="time-left">BITCH YOU GOT 2 DAYS</p>
+              <p class="importance">HELLA IMPORTANT</p>
+            </div>
+            <div class="button edit">EDIT</div>
+            <div class="button delete">DELETE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacing">
+    </div>
+    <i class="material-icons add-task-button" (click)='openNewTask()' >add_circle</i>
+
+    <div class="popup-wrapper container">
+      <div></div>
+    </div>
+
+  </div>
+
+</div>

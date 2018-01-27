@@ -1,0 +1,416 @@
+// App
+$red: #f15e4a;
+$dark: #222222;
+
+//Imports
+@import './mixins';
+@import './animations';
+
+@font-face {
+  font-family: Circular;
+  src: url('Fonts/circular-book.otf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Circular;
+  src: url('Fonts/circular-bold.otf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Circular;
+  src: url('Fonts/circular-black.otf');
+  font-weight: 800;
+}
+@font-face {
+  font-family: Circular;
+  src: url('Fonts/circular-medium.otf');
+  font-weight: 500;
+}
+
+*, *:before, *:after {
+	box-sizing: border-box;
+  font-family: Circular !important;
+  outline: 0 !important;
+}
+i { 
+font-family: 'Material Icons' !important;
+}
+
+body {
+	background: $red;
+	color: white;
+	font-family: Circular !important;
+	margin: 0;
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 800;
+}
+
+
+// Theme 
+
+h2.head {
+  text-align: center;
+  font-size: 3rem;
+}
+h4.subhead { 
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 1.5em;
+}
+
+.page-container {
+  margin-top: 2em;
+}
+
+
+// Pages
+
+.page-wrapper {
+  overflow: hidden;
+  margin-top: 3em;
+  display: grid;
+  grid-template-columns: 1fr minmax(350px, 1fr) 1fr;
+}
+
+.spacing {
+}
+
+// Tasks
+
+div.task-wrapper {
+  animation: .5s fadeInDown ease-in-out;
+  border: 3px solid white;  
+  margin-bottom: -3px;
+  display: block;
+  position: relative;
+  margin: .5em 0;
+  & > * {
+    transition: .25s ease-in-out;
+  }
+
+  .task {
+    height: 2.25em;
+    font-size: 1.15rem;
+    line-height: 2em;
+    padding: 0 1em;
+    font-weight: 500;
+
+    p {
+      display: inline-block;
+    }
+    i {
+      float: right;
+      font-size: 2.25rem;
+      cursor: pointer;
+    }
+  }
+  .task-info-wrapper {
+    overflow: hidden;
+    position: relative;
+    padding: .75em;
+    padding-top: .75em;
+    // transition: 1s ease-out;
+    //visibility: hidden;
+    // height: 0;
+    // padding: 0;
+    .task-info {
+      padding: 0 2.75em;
+      p {
+        text-align: center;
+        font-weight: 800;
+        margin: .5em 0;
+      }
+      .due {
+        border-bottom: 3px solid white;
+        width: 80%;
+        margin: auto;
+      }
+      .time-left {
+        background: white;
+        color: $red;
+        padding: .5em 0;
+        font-size: 1rem;
+      }
+    }
+    .button {
+      font-weight: 800;
+      margin: 0 .5em;
+      display: inline-block;
+      border-bottom: 2px solid $red;
+      padding-bottom: 0px;
+      transition: .25s ease-in-out;
+      &:hover {
+        border-bottom: 2px solid white;
+      }
+      &.delete {
+        float: right;
+      }
+    }
+  }
+
+  &:hover, &.active {
+    cursor: default;
+    .task {
+      background: white;
+      color: $red;
+    }
+    .task-info-wrapper {
+      // padding: .75em;
+      // padding-top: .75em;
+      // height: auto;
+    }
+  }
+}
+.create {
+  padding-bottom: 0px;
+  color: white;
+  background: transparent !important;
+}
+.add-task-button {
+  position: absolute;
+  font-size: 3.5rem !important;
+  right: 4rem;
+  bottom: 2rem;
+}
+
+.closeable {
+  overflow: hidden;
+  transition: height 1s ease;
+}
+.closeable.cl {
+  height: 3em;
+}
+
+
+//forms 
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none !important;
+  }
+
+input[type=text] {
+  background: transparent;
+  border: none;
+  outline: none !important;
+  height: 3em;
+  color: white;
+  box-shadow: none !important;
+  border-bottom: 3px solid white !important;
+  border-radius: 0;
+  font-weight: bold;
+  margin: 0;
+}
+button {
+  color: white;
+  background: white;
+  border-radius: 0;
+  border: none;
+  font-weight: 800;
+}
+
+
+// Popup
+.popup-wrapper {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(34, 34, 34, .75);
+  display: grid;
+  grid-template-columns: 1fr 400px 1fr;
+  grid-template-rows: 100vh;
+  z-index: 100;
+  .popup {
+    position: relative;
+    @include transform(translateY(-50%));
+    top: 50%;
+    form {
+      margin: 0;
+    }
+  }
+}
+div.new-task-wrapper {
+  border: 3px solid white;  
+  margin-bottom: -3px;
+  position: relative;
+  margin: .5em 0;
+  background: $red;
+
+  .new-task {
+    height: 2.25em;
+    font-size: 1.15rem;
+    line-height: 2em;
+    padding: 0 1em;
+    font-weight: 500;
+    color: $red;
+    background: white;
+    input {
+      text-align: center;
+      color: $red;
+      width: 100%;
+      font-size: 1.15rem;
+      padding: 0;
+      margin: 0;
+      height: 2.25em;
+      &::placeholder {
+        color: $red;
+      }
+    }
+  }
+  .new-task-info-wrapper {
+    overflow: hidden;
+    position: relative;
+    padding: .75em 0;
+    padding-top: .75em;
+    background: $red;
+    // transition: 1s ease-out;
+    //visibility: hidden;
+    // height: 0;
+    // padding: 0;
+    .new-task-info {
+      p {
+        text-align: center;
+        font-weight: 800;
+        margin: .5em 0;
+      }
+      .due {
+        width: 100%;
+        margin: auto;
+      }
+      .date {
+        background: white;
+        color: $red;
+        font-weight: bold;
+        padding: .25em 0;
+        padding-top: .5em;
+        font-size: 1.5rem;
+        font-weight: 500;
+        input {
+          width: 1.75em;
+          padding: 0;
+          font-size: 1rem;
+          background: transparent;
+          border-radius: 0;
+          border: none;
+          border-bottom: 2px solid $red;
+          box-shadow: none;
+          font-weight: 500;
+          text-align: center;
+          &::placeholder {
+            color: $red;
+          }
+        }
+      }
+    }
+    .due-date-checkbox {
+      display: none;
+    }
+    .due-date-checkbox:checked + .due-date {
+      color: $red !important;
+      background: white !important;
+    }
+    .due-date {
+      margin: .75em 1.5em;
+      display: inline-block;
+      background: $red;
+      border: 3px solid white;
+      color: white;
+      font-size: 1.15em;
+      padding: .75em 1.5em;
+      font-weight: 800;
+      transition: .25s ease-in-out;
+      input:checked + .due-date {
+        color: $red;
+        background: white;
+      }
+    }
+    .select-wrapper {
+      display: inline-block;
+      position: relative;
+      width: 14em;
+
+      select, select:active, select:focus {
+        background: transparent;
+        border-radius: 0;
+        border: none;
+        border-bottom: 3px solid white;
+        color: white;
+        width: 100%;
+        font-weight: 800;
+        height: 3.5em;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+        outline: 0 !important;
+
+      }
+      i {
+        position: absolute;
+        top: .5em;
+        right: .25em;
+      }
+    }
+    .button {
+      font-weight: 800;
+      margin: 0 .5em;
+      margin-top: .5em;
+      display: inline-block;
+      border-bottom: 2px solid $red;
+      padding-bottom: 0px;
+      transition: .25s ease-in-out;
+      cursor: pointer;
+
+      i {
+        position: relative;
+        top: .15em;
+        font-size: .85rem;
+        margin: 0 .15em;
+      }
+
+      &:hover {
+        border-bottom: 2px solid white;
+      }
+      &.delete {
+        float: right;
+      }
+    }
+  }
+}
+option {
+  color: white;
+  background: $dark;
+  font-weight: bold;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "minimallist",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@angular/common": "^5.1.1",
+    "@angular/compiler": "^5.1.1",
+    "@angular/compiler-cli": "^5.1.1",
+    "@angular/core": "^5.1.1",
+    "@angular/forms": "^5.1.1",
+    "@angular/http": "^5.1.1",
+    "@angular/platform-browser": "^5.1.1",
+    "@angular/platform-browser-dynamic": "^5.1.1",
+    "@angular/platform-server": "^5.1.1",
+    "babel-runtime": "^6.26.0",
+    "material-design-icons": "^3.0.1",
+    "meteor-node-stubs": "^0.3.2",
+    "meteor-rxjs": "^0.4.8",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.5.5",
+    "zone.js": "^0.8.18"
+  },
+  "devDependencies": {
+    "@types/meteor": "^1.4.12",
+    "@types/meteor-accounts-phone": "0.0.5",
+    "@types/underscore": "^1.8.5",
+    "meteor-typings": "^1.4.1"
+  }
+}
