@@ -95,122 +95,15 @@ h4.subhead {
 
 // Pages
 
-.page-wrapper {
+/*.page-wrapper {
   overflow: hidden;
   margin-top: 3em;
   display: grid;
   grid-template-columns: 1fr minmax(350px, 1fr) 1fr;
-}
+}*/
 
 .spacing {
 }
-
-// Tasks
-
-div.task-wrapper {
-  animation: .5s fadeInDown ease-in-out;
-  border: 3px solid white;  
-  margin-bottom: -3px;
-  display: block;
-  position: relative;
-  margin: .5em 0;
-  & > * {
-    transition: .25s ease-in-out;
-  }
-
-  .task {
-    height: 2.25em;
-    font-size: 1.15rem;
-    line-height: 2em;
-    padding: 0 1em;
-    font-weight: 500;
-
-    p {
-      display: inline-block;
-    }
-    i {
-      float: right;
-      font-size: 2.25rem;
-      cursor: pointer;
-    }
-  }
-  .task-info-wrapper {
-    overflow: hidden;
-    position: relative;
-    padding: .75em;
-    padding-top: .75em;
-    // transition: 1s ease-out;
-    //visibility: hidden;
-    // height: 0;
-    // padding: 0;
-    .task-info {
-      padding: 0 2.75em;
-      p {
-        text-align: center;
-        font-weight: 800;
-        margin: .5em 0;
-      }
-      .due {
-        border-bottom: 3px solid white;
-        width: 80%;
-        margin: auto;
-      }
-      .time-left {
-        background: white;
-        color: $green;
-        padding: .5em 0;
-        font-size: 1rem;
-      }
-    }
-    .button {
-      font-weight: 800;
-      margin: 0 .5em;
-      display: inline-block;
-      border-bottom: 2px solid $green;
-      padding-bottom: 0px;
-      transition: .25s ease-in-out;
-      &:hover {
-        border-bottom: 2px solid white;
-      }
-      &.delete {
-        float: right;
-      }
-    }
-  }
-
-  &:hover, &.active {
-    cursor: default;
-    .task {
-      background: white;
-      color: $green;
-    }
-    .task-info-wrapper {
-      // padding: .75em;
-      // padding-top: .75em;
-      // height: auto;
-    }
-  }
-}
-.create {
-  padding-bottom: 0px;
-  color: white;
-  background: transparent !important;
-}
-.add-task-button {
-  position: absolute;
-  font-size: 3.5rem !important;
-  right: 4rem;
-  bottom: 2rem;
-}
-
-.closeable {
-  overflow: hidden;
-  transition: height 1s ease;
-}
-.closeable.cl {
-  height: 3em;
-}
-
 
 //forms 
 textarea:hover, 
@@ -253,180 +146,103 @@ button {
 }
 
 
-// Popup
-.popup-wrapper {
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(34, 34, 34, .75);
-  display: grid;
-  grid-template-columns: 1fr 400px 1fr;
-  grid-template-rows: 100vh;
-  z-index: 100;
-  .popup {
-    position: relative;
-    @include transform(translateY(-50%));
-    top: 50%;
-    form {
-      margin: 0;
-    }
-  }
-}
-div.new-task-wrapper {
-  border: 3px solid white;  
-  margin-bottom: -3px;
-  position: relative;
-  margin: .5em 0;
-  background: $green;
-
-  .new-task {
-    height: 2.25em;
-    font-size: 1.15rem;
-    line-height: 2em;
-    padding: 0 1em;
-    font-weight: 500;
-    color: $green;
-    background: white;
-    input {
-      text-align: center;
-      color: $green;
-      width: 100%;
-      font-size: 1.15rem;
-      padding: 0;
-      margin: 0;
-      height: 2.25em;
-      &::placeholder {
-        color: $green;
-      }
-    }
-  }
-  .new-task-info-wrapper {
-    overflow: hidden;
-    position: relative;
-    padding: .75em 0;
-    padding-top: .75em;
-    background: $green;
-    // transition: 1s ease-out;
-    //visibility: hidden;
-    // height: 0;
-    // padding: 0;
-    .new-task-info {
-      p {
-        text-align: center;
-        font-weight: 800;
-        margin: .5em 0;
-      }
-      .due {
-        width: 100%;
-        margin: auto;
-      }
-      .date {
-        background: white;
-        color: $green;
-        font-weight: bold;
-        padding: .25em 0;
-        padding-top: .5em;
-        font-size: 1.5rem;
-        font-weight: 500;
-        input {
-          width: 1.75em;
-          padding: 0;
-          font-size: 1rem;
-          background: transparent;
-          border-radius: 0;
-          border: none;
-          border-bottom: 2px solid $green;
-          box-shadow: none;
-          font-weight: 500;
-          text-align: center;
-          &::placeholder {
-            color: $green;
-          }
-        }
-      }
-    }
-    .due-date-checkbox {
-      display: none;
-    }
-    .due-date-checkbox:checked + .due-date {
-      color: $green !important;
-      background: white !important;
-    }
-    .due-date {
-      margin: .75em 1.5em;
-      display: inline-block;
-      background: $green;
-      border: 3px solid white;
-      color: white;
-      font-size: 1.15em;
-      padding: .75em 1.5em;
-      font-weight: 800;
-      transition: .25s ease-in-out;
-      input:checked + .due-date {
-        color: $green;
-        background: white;
-      }
-    }
-    .select-wrapper {
-      display: inline-block;
-      position: relative;
-      width: 14em;
-
-      select, select:active, select:focus {
-        background: transparent;
-        border-radius: 0;
-        border: none;
-        border-bottom: 3px solid white;
-        color: white;
-        width: 100%;
-        font-weight: 800;
-        height: 3.5em;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        text-indent: 1px;
-        text-overflow: '';
-        outline: 0 !important;
-
-      }
-      i {
-        position: absolute;
-        top: .5em;
-        right: .25em;
-      }
-    }
-    .button {
-      font-weight: 800;
-      margin: 0 .5em;
-      margin-top: .5em;
-      display: inline-block;
-      border-bottom: 2px solid $green;
-      padding-bottom: 0px;
-      transition: .25s ease-in-out;
-      cursor: pointer;
-
-      i {
-        position: relative;
-        top: .15em;
-        font-size: .85rem;
-        margin: 0 .15em;
-      }
-
-      &:hover {
-        border-bottom: 2px solid white;
-      }
-      &.delete {
-        float: right;
-      }
-    }
-  }
-}
 option {
   color: white;
   background: $dark;
   font-weight: bold;
+
+}
+
+.form-tab {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  grid-row-gap: 1em;
+  margin-top: .5em;
+
+  @include breakpoint(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  num-element {
+    display: inherit;
+    grid-gap: inherit
+  }
+
+  .data-collect-element {
+    background: white;
+    color: $dark;
+    padding: 1em 1.5em;
+    width: 300px;
+    margin: auto;
+    border-radius: 3px;
+    -webkit-box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
+    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
+
+
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+      label {
+        width: 50%;
+        border: 4px $dark solid;
+        cursor: pointer;
+        display: inline-block;
+        padding: .5em;
+        margin: 1em 0;
+        &.yes {
+          float: left;
+        }
+        &.no {
+          float: right;
+        }
+        &.active {
+          background: $dark;
+          color: white;
+        }
+      }
+    }
+    button {
+      // border-radius: 50%;
+      // background: $dark;
+      // height: 1.5em;
+      // width: 1.5em;
+      position: absolute;
+      bottom: 0;
+
+      &.add {
+        left: 0;
+      }
+      &.subtract {
+        float: right;
+        right: 0;
+      }
+      padding: 0;
+      i {
+        border-radius: 50%;
+        background: $dark;
+        width: 1.75em;
+        height: 1.75em;
+        padding: 0;
+        text-align: middle;
+        line-height: 1.75em;
+        font-weight: 800;
+      }
+    }
+    input.number {
+      border: none;
+      border-bottom: 2px solid $dark;
+      font-size: 3em;
+      width: 40%;
+      color: $dark;
+      text-align: center;
+    }
+    p {
+      font-size: 1.35rem;
+      text-transform: uppercase;
+    }
+  }
 }
 
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
@@ -436,4 +252,12 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
  
 input[type="number"] {
     -moz-appearance: textfield;
+} 
+
+input[type=checkbox]:checked + label.active {
+  background: $dark;
+  color: white;
+}
+input[type=checkbox] {
+  display: none;
 }
