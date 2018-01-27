@@ -1,5 +1,5 @@
 {
-  "name": "minimallist",
+  "name": "frc-scouting",
   "private": true,
   "scripts": {
     "start": "meteor run"
@@ -14,6 +14,7 @@
     "@angular/platform-browser": "^5.1.1",
     "@angular/platform-browser-dynamic": "^5.1.1",
     "@angular/platform-server": "^5.1.1",
+    "@angular/router": "^5.2.2",
     "babel-runtime": "^6.26.0",
     "material-design-icons": "^3.0.1",
     "meteor-node-stubs": "^0.3.2",

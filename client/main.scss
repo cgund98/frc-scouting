@@ -1,5 +1,5 @@
 // App
-$red: #f15e4a;
+$green: #3FC380;
 $dark: #222222;
 
 //Imports
@@ -39,7 +39,7 @@ font-family: 'Material Icons' !important;
 }
 
 body {
-	background: $red;
+	background: $green;
 	color: white;
 	font-family: Circular !important;
 	margin: 0;
@@ -53,20 +53,43 @@ h1,h2,h3,h4,h5,h6 {
 
 // Theme 
 
-h2.head {
+h4.head {
   text-align: center;
-  font-size: 3rem;
+  font-size: 1.5rem !important;
+  margin: 0 .5em;
+  font-weight: 800;
 }
 h4.subhead { 
   text-align: center;
-  font-size: 1rem;
+  font-size: 1rem !important;
   font-weight: bold;
   margin: auto;
+  font-weight: 800;
   margin-top: 1.5em;
 }
 
 .page-container {
-  margin-top: 2em;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }
 
 
@@ -134,7 +157,7 @@ div.task-wrapper {
       }
       .time-left {
         background: white;
-        color: $red;
+        color: $green;
         padding: .5em 0;
         font-size: 1rem;
       }
@@ -143,7 +166,7 @@ div.task-wrapper {
       font-weight: 800;
       margin: 0 .5em;
       display: inline-block;
-      border-bottom: 2px solid $red;
+      border-bottom: 2px solid $green;
       padding-bottom: 0px;
       transition: .25s ease-in-out;
       &:hover {
@@ -159,7 +182,7 @@ div.task-wrapper {
     cursor: default;
     .task {
       background: white;
-      color: $red;
+      color: $green;
     }
     .task-info-wrapper {
       // padding: .75em;
@@ -257,7 +280,7 @@ div.new-task-wrapper {
   margin-bottom: -3px;
   position: relative;
   margin: .5em 0;
-  background: $red;
+  background: $green;
 
   .new-task {
     height: 2.25em;
@@ -265,18 +288,18 @@ div.new-task-wrapper {
     line-height: 2em;
     padding: 0 1em;
     font-weight: 500;
-    color: $red;
+    color: $green;
     background: white;
     input {
       text-align: center;
-      color: $red;
+      color: $green;
       width: 100%;
       font-size: 1.15rem;
       padding: 0;
       margin: 0;
       height: 2.25em;
       &::placeholder {
-        color: $red;
+        color: $green;
       }
     }
   }
@@ -285,7 +308,7 @@ div.new-task-wrapper {
     position: relative;
     padding: .75em 0;
     padding-top: .75em;
-    background: $red;
+    background: $green;
     // transition: 1s ease-out;
     //visibility: hidden;
     // height: 0;
@@ -302,7 +325,7 @@ div.new-task-wrapper {
       }
       .date {
         background: white;
-        color: $red;
+        color: $green;
         font-weight: bold;
         padding: .25em 0;
         padding-top: .5em;
@@ -315,12 +338,12 @@ div.new-task-wrapper {
           background: transparent;
           border-radius: 0;
           border: none;
-          border-bottom: 2px solid $red;
+          border-bottom: 2px solid $green;
           box-shadow: none;
           font-weight: 500;
           text-align: center;
           &::placeholder {
-            color: $red;
+            color: $green;
           }
         }
       }
@@ -329,13 +352,13 @@ div.new-task-wrapper {
       display: none;
     }
     .due-date-checkbox:checked + .due-date {
-      color: $red !important;
+      color: $green !important;
       background: white !important;
     }
     .due-date {
       margin: .75em 1.5em;
       display: inline-block;
-      background: $red;
+      background: $green;
       border: 3px solid white;
       color: white;
       font-size: 1.15em;
@@ -343,7 +366,7 @@ div.new-task-wrapper {
       font-weight: 800;
       transition: .25s ease-in-out;
       input:checked + .due-date {
-        color: $red;
+        color: $green;
         background: white;
       }
     }
@@ -379,7 +402,7 @@ div.new-task-wrapper {
       margin: 0 .5em;
       margin-top: .5em;
       display: inline-block;
-      border-bottom: 2px solid $red;
+      border-bottom: 2px solid $green;
       padding-bottom: 0px;
       transition: .25s ease-in-out;
       cursor: pointer;

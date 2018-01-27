@@ -1,22 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { TASKS_DECLARATIONS } from './tasks';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
+
+import { routes } from './app.routes';
+import { CollectPageModule } from '../pages/collect/collect-page.module';
+
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule
+    RouterModule.forRoot(routes),
+    CollectPageModule
   ],
   declarations: [
     AppComponent,
-    ...TASKS_DECLARATIONS
   ],
 
   bootstrap: [
     AppComponent
+  ],
+  providers: [
+  {provide: APP_BASE_HREF, useValue : '/' }
   ]
 })
 

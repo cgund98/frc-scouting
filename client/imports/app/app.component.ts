@@ -16,8 +16,4 @@ export class AppComponent {
   constructor() {
     this.tasks = Tasks.find({}).zone();
   }
-
-  openNewTask() {
-  	$('.popup-wrapper').css('animation', '1s easeInDown');
-  }
 }
