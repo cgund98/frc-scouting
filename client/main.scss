@@ -49,6 +49,10 @@ body {
 h1,h2,h3,h4,h5,h6 {
   font-weight: 800;
 }
+a {
+  text-decoration: none;
+  color: $dark;
+}
 
 
 // Theme 
@@ -90,19 +94,6 @@ h4.subhead {
   .container {
     width: 1170px;
   }
-}
-
-
-// Pages
-
-/*.page-wrapper {
-  overflow: hidden;
-  margin-top: 3em;
-  display: grid;
-  grid-template-columns: 1fr minmax(350px, 1fr) 1fr;
-}*/
-
-.spacing {
 }
 
 //forms 
@@ -157,16 +148,44 @@ option {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  grid-row-gap: 1em;
+  grid-row-gap: 2em;
   margin-top: .5em;
+  display: none;
+
+  &.active {
+    display: grid;
+    margin-top: 2em;
+  }
 
   @include breakpoint(tablet) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  num-element {
+  num-element, toggle-element, setup-element {
     display: inherit;
-    grid-gap: inherit
+    grid-gap: inherit;
+
+    &.wide {
+      @include breakpoint(tablet) {
+        grid-column: 1 / 3;
+      }
+    }
+  }
+  & > .button-wrapper {
+    grid-column: 1/3;
+    color: $green;
+    button {
+      cursor: pointer;
+      font-size: 1em;
+      display: inline-block;
+      margin: auto;
+      padding: .75em 2em;
+      color: $green;
+      border-radius: 3px;
+      -webkit-box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
+    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
+    }
   }
 
   .data-collect-element {
@@ -180,6 +199,41 @@ option {
     -moz-box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
     box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
 
+    &.setup {
+      width: 100%;
+      @include breakpoint(tablet) {
+        width: 500px;
+      }
+
+      & > p {
+        font-size: 1.25em;
+      }
+      .num-wrapper {
+        width: 50%;
+        padding: 0 1em;
+        margin-bottom: 2em;
+
+        &:nth-child(1) {
+          float: left;
+        }
+        &:nth-child(2) {
+          float: right;
+        }
+
+        p {
+          margin: .5em 0;
+          font-weight: 800;
+          font-size: .8em;
+        }
+      }
+
+      input.number {
+        border-bottom: 3px solid $green;
+        width: 100%;
+        font-size: 2em;
+        font-weight: normal;
+      }
+    }
 
     .input-wrapper {
       position: relative;
@@ -191,6 +245,7 @@ option {
         display: inline-block;
         padding: .5em;
         margin: 1em 0;
+        transition: .25s ease-in-out;
         &.yes {
           float: left;
         }
@@ -203,14 +258,18 @@ option {
         }
       }
     }
-    button {
+    .button {
       // border-radius: 50%;
       // background: $dark;
       // height: 1.5em;
       // width: 1.5em;
+      transition: .15s ease-in-out;
       position: absolute;
       bottom: 0;
-
+      cursor: pointer;
+      &:hover {
+        @include transform(scale(1.075));
+      }
       &.add {
         left: 0;
       }
@@ -220,6 +279,7 @@ option {
       }
       padding: 0;
       i {
+        color: white;
         border-radius: 50%;
         background: $dark;
         width: 1.75em;
@@ -260,4 +320,41 @@ input[type=checkbox]:checked + label.active {
 }
 input[type=checkbox] {
   display: none;
+}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+*:active, * { outline: none !important; }  
+*:focus{ -moz-outline-style: none !important; }
+
+// Collect Nav
+
+.tab-nav {
+  color: white;
+  position: absolute;
+  bottom: 2em;
+  width: 100%;
+  left: 0;
+  a {
+    color: white;
+    margin: 0 2em;
+    font-size: .8em;
+    padding: .5em;
+    font-weight: 800;
+    transition: .15s;
+    border-bottom: 3px solid $green;
+    &:hover {
+      border-bottom: 3px solid white;
+    }
+    &.active {
+      border-bottom: 3px solid white;
+      font-size: .95em;
+    }
+  }
 }

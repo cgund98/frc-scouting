@@ -1,15 +1,25 @@
-<form class='collect-form'>
+<form class='collect-form' >
 
-<div class="setup form-tab">
+<div class="setup form-tab active">
+	<setup-element class="wide"></setup-element>
 </div>
 
 <div class="auton form-tab">
+	<num-element name="Auton High Boxes" formName="auton-scale-boxes" class="wide"></num-element>
+	<num-element name="Auton Low Boxes" formName="auton-switch-boxes" class="wide"></num-element>
 </div>
 
-<div class="teleop form-tab active">
-	<num-element></num-element>
-	<num-element></num-element>
-	<toggle-element></toggle-element>
+<div class="teleop form-tab">
+	<num-element name="High Boxes" formName="scale-boxes"></num-element>
+	<num-element name="Low Boxes" formName="switch-boxes"></num-element>
+	<toggle-element class="wide" name="Climbed" formName="climbed"></toggle-element>
+	<div class="button-wrapper"><button type="button" (click)="submit()">SUBMIT</button></div>
 </div>
 
 </form>
+
+<nav class="tab-nav">
+	<a href="#" class="setup active" (click)="changeTab($event)">SETUP</a>
+	<a href="#" class="auton" (click)="changeTab($event)">AUTON</a>
+	<a href="#" class="teleop" (click)="changeTab($event)">TELEOP</a>
+</nav>

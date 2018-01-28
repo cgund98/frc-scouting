@@ -1,8 +1,8 @@
 <div class="data-collect-element">
 	<div class="input-wrapper">
-		<input type="checkbox" name="check" id="check">
-		<label class="yes" for="check">YES</label>
-		<label class="no active" for="check">NO</label>
+		<input type="checkbox" name="{{ forName }}" class="{{ formName }}" >
+		<label class="yes noselect" for="check" (click)="toggle($event)">YES</label>
+		<label class="no active noselect" for="check" (click)="toggle($event)">NO</label>
 	</div>
-	<p>Scale Boxes</p>
+	<p>{{ name }}</p>
 </div>

@@ -1,8 +1,8 @@
 <div class="data-collect-element">
 	<div class="input-wrapper">
-		<button class="add" type='button'><i class="material-icons">add</i></button>
-		<input class="number" type="number" value='0'>
-		<button class="subtract" type='button'><i class="material-icons subtract">&#x2212;</i></button>
+		<div class="button add" (click)="addValue()"><i class="material-icons noselect">add</i></div>
+		<input class="number noselect" type="number" name="{{ formName }}" value="{{ val }}" readonly="readonly">
+		<div class="button subtract" (click)="subtractValue()"><i class="material-icons subtract noselect">&#x2212;</i></div>
 	</div>
-	<p>Scale Boxes</p>
+	<p>{{ name }}</p>
 </div>
