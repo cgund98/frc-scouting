@@ -1,7 +1,7 @@
 <div class="data-collect-element">
 	<div class="input-wrapper">
 		<div class="button add" (click)="addValue()"><i class="material-icons noselect">add</i></div>
-		<input class="number noselect" type="number" name="{{ formName }}" value="{{ val }}" readonly="readonly">
+		<input class="number noselect {{ formName }}" type="number" name="{{ formName }}" value="{{ val }}" readonly="readonly">
 		<div class="button subtract" (click)="subtractValue()"><i class="material-icons subtract noselect">&#x2212;</i></div>
 	</div>
 	<p>{{ name }}</p>

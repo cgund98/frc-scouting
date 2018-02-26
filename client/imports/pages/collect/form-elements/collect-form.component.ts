@@ -9,6 +9,9 @@ import template from './collect-form.component.html';
 })
 export class CollectFormComponent {
 
+	formElements = ['team-number', 'match-number', 'scale-boxes', 'switch-boxes', 'climbed', 'auton-scale-boxes', 'auton-switch-boxes'];
+
+
 	currentTab = 'setup';
 
 	changeTab(event: any) {
@@ -34,4 +37,33 @@ export class CollectFormComponent {
 			});
 		}
 	}
+
+	submitForm(event: any) {
+		event.preventDefault();
+		var formSelectors = [];
+		var formVals = {};
+		var alert = '';
+		var error = false;
+
+		this.formElements.forEach(function(el) {
+			formSelectors.push('.' + el);
+			var elValue = $('.'+el)[0].value;
+			if ( elValue == 'on') {
+				formVals[el] = $('.'+el)[0].checked;
+			} else if(elValue === '') {
+				alert = 'Match setup not completed';
+				error = true;
+			} else {
+				formVals[el] = parseInt(elValue);
+			}
+		});
+		//console.log(this.formElements);
+		//console.log(formSelectors);
+		console.log(formVals);
+		if (error) {
+			window.alert(alert);
+			return;
+		}
+	}
+
 }
