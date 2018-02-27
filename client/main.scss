@@ -32,7 +32,7 @@ $dark: #222222;
 *, *:before, *:after {
 	box-sizing: border-box;
   font-family: Circular !important;
-  outline: 0 !important;
+  outline: none !important;
 }
 i { 
 font-family: 'Material Icons' !important;
@@ -347,6 +347,10 @@ input[type=checkbox] {
 
 // Map Layout Styles
 
+
+$block-size: 60px;
+$field-block-icon-size: 25px;
+
 .map-layout-wrapper {
   width: 100% !important;
 
@@ -362,10 +366,26 @@ input[type=checkbox] {
       margin: 0 2em;
       margin-top: 1em;
     }
+     & > div.box-place {
+      width: $block-size;
+      height: $block-size;
+      border: 3px solid $dark;
+      margin-top: 24px + $block-size*3.5/2 - $block-size/2;
+
+      &.left {
+        float: left;
+      }
+      &.right {
+        float: right;
+      }
+      img {
+        height: $field-block-icon-size;
+        width: $field-block-icon-size;
+        margin-top: ($block-size - 6px) / 2 - $field-block-icon-size / 2; 
+      }
+    }
   }
 }
-
-$block-size: 60px;
 
 .field-block-wrapper {
   height: $block-size * 3.5;
@@ -389,8 +409,6 @@ $block-size: 60px;
     height: $block-size;
     border: 3px solid $dark;
 
-
-    $field-block-icon-size: 25px;
     i {
       font-size: $field-block-icon-size + 5px;
       line-height: $block-size - 6px;
@@ -412,6 +430,63 @@ $block-size: 60px;
     width: $block-size;
     height: $block-size * 1.5;
     background: $dark;
+  }
+}
+
+.box-pickup, .box-place {
+  transition: .15s ease-in-out;
+  z-index: 1;
+  cursor: pointer;
+  &:hover {
+    background: $green;
+  }
+  img {
+    z-index: 15;
+  }
+}
+
+nav.map-nav {
+  height: 1.25em;
+  margin: 1em 0;
+
+  .pickup {
+    float: left;
+  }
+  .placed {
+    float: right;
+  }
+  & > p {
+    margin: 0;
+    line-height: $field-block-icon-size;
+    text-align: center;
+    font-size: .75em !important;
+
+    & > img {
+      height: $field-block-icon-size;
+      width: $field-block-icon-size;
+      position: relative;
+      top: 5px;
+      margin: 0 .25em;
+    }
+  }
+
+  button {
+    color: $dark;
+    transition: .15s ease-in-out;
+    font-size: .75em;
+    border: 3px solid white;
+    padding: .5em 1.5em;
+    cursor: pointer;
+    margin: 0 1em;
+
+    &:hover {
+      border: 3px solid $dark;
+    }
+    &:active {
+      background: $dark;
+      border: 3px solid $dark;
+      color: white;
+    }
   }
 }
 

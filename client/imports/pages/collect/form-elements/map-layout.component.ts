@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import template from './map-layout.component.html';
 
@@ -8,5 +8,12 @@ import template from './map-layout.component.html';
 })
 
 export class MapLayoutComponent {
+
+  ngOnInit() {
+    this.totalPickedUp = 0;
+    this.totalPlaced = 0;
+    this.climbed = false;
+    this.runs = [];
+  }
 
 }

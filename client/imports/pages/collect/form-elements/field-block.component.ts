@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import template from './field-block.component.html';
 
@@ -7,6 +7,19 @@ import template from './field-block.component.html';
   template,
 })
 
-export class FieldBlockComponent {
+export class FieldBlockComponent implements OnInit {
+  @Input() position;
 
+  ngOnInit() {
+    if (this.position == "middle") {
+      this.sideComponents = "climb";
+      this.sideComponentsIcon = "graphics/climb.png";
+    } else {
+      this.sideComponents = "box-place";
+      this.sideComponentsIcon = "graphics/pickup.png";
+      console.log(this.position);
+    }
+  }
+
+  
 }
