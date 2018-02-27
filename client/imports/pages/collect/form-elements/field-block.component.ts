@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 import template from './field-block.component.html';
 
@@ -9,16 +9,34 @@ import template from './field-block.component.html';
 
 export class FieldBlockComponent implements OnInit {
   @Input() position;
+  sideComponents;
+  sideComponentsIcon;
+
+  @Output()
+  change = new EventEmitter();
+
 
   ngOnInit() {
     if (this.position == "middle") {
       this.sideComponents = "climb";
       this.sideComponentsIcon = "graphics/climb.png";
     } else {
-      this.sideComponents = "box-place";
+      this.sideComponents = "pickup";
       this.sideComponentsIcon = "graphics/pickup.png";
-      console.log(this.position);
     }
+  }
+
+  interaction(event) {
+    out = {};
+    if (event.target.id) {
+      out.target = event.target.id;
+    } else {
+      out.target = event.target.parentElement.id;
+    }
+    out.timestamp = Date.now();
+    out.type = out.target.split('-')[2];
+
+    this.change.emit(out);
   }
 
   

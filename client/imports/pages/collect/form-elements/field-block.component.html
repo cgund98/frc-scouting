@@ -1,24 +1,24 @@
 <div class="field-block-wrapper">
   
   <div class="col-1">
-    <div class="box-pickup" id="{{ position + '-left-' + sideComponents }}">
+    <div class="box-pickup" id="{{ position + '-left-' + sideComponents }}" (click)="interaction($event)">
       <img class="material-icons noselect" src="{{ sideComponentsIcon }}"></img>
     </div>
   </div>
 
   <div class="col-2">
-    <div class="box-place" id="{{ position + '-top-place' }}">
+    <div class="box-place" id="{{ position + '-top-place' }}" (click)="interaction($event)">
       <img class="noselect" src="graphics/box-down.png">
     </div>
     <div class="obstacle"></div>
 
-    <div class="box-place" id="{{ position + '-bottom-place' }}">
+    <div class="box-place" id="{{ position + '-bottom-place' }}" (click)="interaction($event)">
       <img class="noselect" src="graphics/box-down.png">
     </div>
   </div>
 
   <div class="col-3">
-    <div class="box-pickup" id="{{ position + '-right-' + sideComponents }}">
+    <div class="box-pickup" id="{{ position + '-right-' + sideComponents }}" (click)="interaction($event)">
       <img class="material-icons noselect" src="{{ sideComponentsIcon }}"></img>
     </div>
   </div>

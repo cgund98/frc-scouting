@@ -9,9 +9,9 @@
         <img class="noselect" src="graphics/box-down.png">
       </div>
 
-      <field-block position="left"></field-block>
-      <field-block position="middle"></field-block>
-      <field-block position="right"></field-block>
+      <field-block position="left" (change)="blockInteraction($event)"></field-block>
+      <field-block position="middle" (change)="blockInteraction($event)"></field-block>
+      <field-block position="right" (change)="blockInteraction($event)"></field-block>
 
       <div class="box-place right" id="right-power-up">
         <img class="noselect" src="graphics/box-down.png">
@@ -24,7 +24,7 @@
         <img class="material-icons noselect" src="graphics/pickup.png"></img>
         Picked up: {{ totalPickedUp }}
       </p>
-      <button type="button" id="undo">UNDO</button>
+      <button type="button" id="undo" (click)="undo()">UNDO</button>
       <button type="button" id="defended">DEF'D AGAINST</button>
       <button type="button" id="missed">MISSED</button>
       <p class="placed">
