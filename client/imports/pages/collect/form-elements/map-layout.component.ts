@@ -12,6 +12,8 @@ export class MapLayoutComponent {
   totalPickedUp;
   totalPlaced;
   climbed;
+  defendedAgainst;
+  missedShot;
   runs;
   events;
 
@@ -20,6 +22,8 @@ export class MapLayoutComponent {
     this.totalPickedUp = 0;
     this.totalPlaced = 0;
     this.climbed = false;
+    this.defendedAgainst = false;
+    this.missedShot = false;
     this.runs = [];
     this.events = [];
   }
@@ -31,7 +35,15 @@ export class MapLayoutComponent {
     } else if (event.type == 'place') { // Interaction was a place
       run = {};
       run.userError = false;
+
+      // Check if shot was missed/defendedAgainst and reset the variable
+      run.missedShot = this.missedShot;
+      run.defendedAgainst = this.defendedAgainst;
+      this.missedShot = false;
+      this.defendedAgainst = false;
+
       run.timePlaced = event.timestamp;
+      run.placeLocation = event.target;
       this.totalPlaced += 1;
 
       for (var i = 0; i < this.events.length; i++) {
@@ -49,7 +61,6 @@ export class MapLayoutComponent {
         }
       }
 
-      run.placeLocation = event.target;
       run.timeEndured = (run.timePlaced - run.timePickedUp) / 1000;
       this.runs.push(run);
       console.log('Runs: ', this.runs);
@@ -77,8 +88,20 @@ export class MapLayoutComponent {
       this.climbed = false;
     }
 
-    this.events.pop();
+    this.events.pop(); // Removes the last event
     console.log('Events: ', this.events);
+  }
+
+  toggleDefended(event) {
+    event.preventDefault();
+    this.defendedAgainst = !this.defendedAgainst;
+    event.target.class;
+  }
+
+  toggleMissed(event) {
+    event.preventDefault();
+    this.missedShot = !this.missedShot;
+    event.target.class;
   }
 
 }

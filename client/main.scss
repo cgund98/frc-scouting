@@ -482,7 +482,7 @@ nav.map-nav {
     &:hover {
       border: 3px solid $dark;
     }
-    &:active {
+    &:active, &.active {
       background: $dark;
       border: 3px solid $dark;
       color: white;

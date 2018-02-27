@@ -25,8 +25,8 @@
         Picked up: {{ totalPickedUp }}
       </p>
       <button type="button" id="undo" (click)="undo()">UNDO</button>
-      <button type="button" id="defended">DEF'D AGAINST</button>
-      <button type="button" id="missed">MISSED</button>
+      <button [class.active]="defendedAgainst" type="button" id="defended" (click)="toggleDefended($event)">DEF'D AGAINST</button>
+      <button [class.active]="missedShot" type="button" id="missed" (click)="toggleMissed($event)">MISSED</button>
       <p class="placed">
         Placed: {{ totalPlaced }}
         <img class="noselect" src="graphics/box-down.png">
