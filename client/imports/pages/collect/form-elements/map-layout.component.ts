@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, OnChanges } from '@angular/core';
 
 import template from './map-layout.component.html';
 
@@ -9,6 +9,7 @@ import template from './map-layout.component.html';
 
 export class MapLayoutComponent implements OnInit {
 
+  @Input() isAuton: boolean;
   totalPickedUp;
   totalPlaced;
   climbed;
@@ -16,6 +17,7 @@ export class MapLayoutComponent implements OnInit {
   missedShot;
   runs;
   events;
+  lineCrossed;
 
   @Output()
   update = new EventEmitter();
@@ -27,6 +29,7 @@ export class MapLayoutComponent implements OnInit {
     this.climbed = false;
     this.defendedAgainst = false;
     this.missedShot = false;
+    this.lineCrossed = false;
     this.runs = [];
     this.events = [];
     this.emit();
@@ -34,6 +37,9 @@ export class MapLayoutComponent implements OnInit {
 
   skrt() {
     console.log('skrt');
+  }
+  toggleLineCrossed(event: any) {
+    this.lineCrossed = !this.lineCrossed;
   }
 
   blockInteraction(event: any) { // Interaction with a field-block component
@@ -43,6 +49,7 @@ export class MapLayoutComponent implements OnInit {
     } else if (event.type == 'place') { // Interaction was a place
       var run = {};
       run.userError = false;
+      run.isAuton = this.isAuton;
 
       // Check if shot was missed/defendedAgainst and reset the variable
       run.missedShot = this.missedShot;
@@ -83,6 +90,7 @@ export class MapLayoutComponent implements OnInit {
   powerUpInteraction(event: any) {
     var run = {};
     run.userError = false;
+    run.isAuton = this.isAuton;
 
     var out = {} // Mimic the update function in field-block.component
     if (event.target.id) {
@@ -168,6 +176,7 @@ export class MapLayoutComponent implements OnInit {
       totalPlaced: this.totalPlaced,
       climbed: this.climbed,
       runs: this.runs,
+      autonLineCrossed: this.lineCrossed,
     }
     this.update.emit(out);
   }

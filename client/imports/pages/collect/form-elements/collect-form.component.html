@@ -8,13 +8,22 @@
 </div>
 
 <div class="auton form-tab">
-	<num-element name="Auton High Boxes" formName="auton-scale-boxes" class="wide"></num-element>
-	<num-element name="Auton Low Boxes" formName="auton-switch-boxes" class="wide"></num-element>
+	<!-- <toggle-element name="Crossed Line" formName="auton-scale-boxes" class="wide"></toggle-element>
+	<toggle-element name="Auton Low Boxes" formName="auton-switch-boxes" class="wide"></toggle-element> -->
 </div>
 
 <div class="teleop form-tab">
 
-	<map-layout #map (update)="updateTeleopObject($event)"></map-layout>
+	<map-layout #map (update)="updateTeleopObject($event)" 
+    [isAuton]="isAuton"></map-layout>
+
+  <div class="input-wrapper stage-wrapper">
+    <input type="checkbox" #stageInput id="stage" class="stage" checked>
+    <label class="yes noselect" for="stage"
+      [class.active]="isAuton" (click)="toggleStage($event)">AUTON</label>
+    <label class="no active noselect" for="stage" 
+      [class.active]="!isAuton" (click)="toggleStage($event)">TELEOP</label>
+  </div>
 
 	<div class="button-wrapper"><button type="button" (click)="submitForm($event)">SUBMIT</button></div>
 </div>
@@ -23,6 +32,6 @@
 
 <nav class="tab-nav">
 	<a href="#" class="setup active" #setupLink (click)="changeTab($event)">SETUP</a>
-	<a href="#" class="auton" #autonLink (click)="changeTab($event)">AUTON</a>
-	<a href="#" class="teleop" #teleopLink (click)="changeTab($event)">TELEOP</a>
+	<!-- <a href="#" class="auton" #autonLink (click)="changeTab($event)">AUTON</a> -->
+	<a href="#" class="teleop" #teleopLink (click)="changeTab($event)">MATCH</a>
 </nav>

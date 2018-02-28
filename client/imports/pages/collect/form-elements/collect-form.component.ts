@@ -17,14 +17,26 @@ export class CollectFormComponent implements OnInit {
 	matchNum;
 	teamNum;
 	teleop;
+	isAuton;
 
 	@ViewChild('map') mapLayout: MapLayoutComponent;
 	@ViewChild('setup') setupComponent: SetupElementComponent;
 	@ViewChild('setupLink') setupLink: ElementRef;
-	@ViewChild('autonLink') autonLink: ElementRef;
+	// @ViewChild('autonLink') autonLink: ElementRef;
 	@ViewChild('teleopLink') teleopLink: ElementRef;
+	@ViewChild('stageInput') stageInput: ElementRef;
 
 	constructor() {}
+
+	ngOnInit() {
+		this.isAuton = this.stageInput.nativeElement.checked;
+	}
+
+	toggleStage(event: any) {
+		event.preventDefault();
+		this.stageInput.nativeElement.click();
+		this.isAuton = this.stageInput.nativeElement.checked;
+	}
 
 	updateSetupVariables(event: any) {
 		this.matchNum = event.matchNum;
@@ -77,13 +89,14 @@ export class CollectFormComponent implements OnInit {
 			return;
 		}
 
-		match = {
+		var match = {
 			matchNum: this.matchNum,
 			teamNum: this.teamNum,
 			totalPickedUp: this.teleop.totalPickedUp,
       totalPlaced: this.teleop.totalPlaced,
       climbed: this.teleop.climbed,
 			runs: this.teleop.runs,
+			autonLineCrossed: this.teleop.autonLineCrossed,
 		}
 
 		Matches.insert(match);
