@@ -5,15 +5,16 @@
 
     <div class="field-wrapper">
 
-      <div class="box-place left" id="left-power-up">
+      <div class="box-place left" id="left-side-powerup" (click)="powerUpInteraction($event)">
         <img class="noselect" src="graphics/box-down.png">
       </div>
 
       <field-block position="left" (change)="blockInteraction($event)"></field-block>
-      <field-block position="middle" (change)="blockInteraction($event)"></field-block>
+      <field-block position="middle" (change)="blockInteraction($event)" 
+      [class.climbed]="climbed"></field-block>
       <field-block position="right" (change)="blockInteraction($event)"></field-block>
 
-      <div class="box-place right" id="right-power-up">
+      <div class="box-place right" id="right-side-powerup" (click)="powerUpInteraction($event)">
         <img class="noselect" src="graphics/box-down.png">
       </div>
 

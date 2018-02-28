@@ -27,7 +27,7 @@ export class FieldBlockComponent implements OnInit {
   }
 
   interaction(event) {
-    out = {};
+    var out = {};
     if (event.target.id) {
       out.target = event.target.id;
     } else {

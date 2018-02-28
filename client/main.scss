@@ -444,6 +444,11 @@ $field-block-icon-size: 25px;
     z-index: 15;
   }
 }
+field-block.climbed {
+  .box-pickup {
+    background: $green;
+  }
+}
 
 nav.map-nav {
   height: 1.25em;

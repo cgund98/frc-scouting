@@ -10,4 +10,5 @@ import { NumElementComponent } from './form-elements/num-element.component';
 })
 
 export class CollectPageComponent {
+
 }

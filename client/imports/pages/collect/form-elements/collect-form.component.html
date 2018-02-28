@@ -1,7 +1,10 @@
+<h4 class="subhead">Match {{ matchNum }}</h4>
+<h4 class="head">Team {{ teamNum }}</h4>
+
 <form class='collect-form' >
 
 <div class="setup form-tab active">
-	<setup-element class="wide"></setup-element>
+	<setup-element #setup class="wide" (update)="updateSetupVariables($event)"></setup-element>
 </div>
 
 <div class="auton form-tab">
@@ -10,11 +13,8 @@
 </div>
 
 <div class="teleop form-tab">
-	<!-- <num-element name="High Boxes" formName="scale-boxes"></num-element>
-	<num-element name="Low Boxes" formName="switch-boxes"></num-element>
-	<toggle-element class="wide" name="Climbed" formName="climbed"></toggle-element> -->
 
-	<map-layout></map-layout>
+	<map-layout #map (update)="updateTeleopObject($event)"></map-layout>
 
 	<div class="button-wrapper"><button type="button" (click)="submitForm($event)">SUBMIT</button></div>
 </div>
@@ -22,7 +22,7 @@
 </form>
 
 <nav class="tab-nav">
-	<a href="#" class="setup active" (click)="changeTab($event)">SETUP</a>
-	<a href="#" class="auton" (click)="changeTab($event)">AUTON</a>
-	<a href="#" class="teleop" (click)="changeTab($event)">TELEOP</a>
+	<a href="#" class="setup active" #setupLink (click)="changeTab($event)">SETUP</a>
+	<a href="#" class="auton" #autonLink (click)="changeTab($event)">AUTON</a>
+	<a href="#" class="teleop" #teleopLink (click)="changeTab($event)">TELEOP</a>
 </nav>

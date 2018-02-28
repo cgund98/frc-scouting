@@ -2,11 +2,11 @@
 	<p>MATCH SETUP</p>
 	<div class="input-wrapper">
 		<div class="num-wrapper">
-			<input class="number noselect match-number" type="number" name="matchNum" value="{{ matchNum }}">
+			<input class="number noselect match-number" type="number" name="matchNum" value="{{ matchNum }}" (keyup)="updateMatchNum($event)">
 			<p>MATCH #</p>
 		</div>
 		<div class="num-wrapper">
-			<input class="number noselect team-number" type="number" name="teamNum" value="{{ teamNum }}">
+			<input class="number noselect team-number" type="number" name="teamNum" value="{{ teamNum }}" (keyup)="updateTeamNum($event)">
 			<p>TEAM #</p>
 		</div>
 	</div>

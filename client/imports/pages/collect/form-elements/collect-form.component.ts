@@ -1,23 +1,47 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Session } from 'meteor/session';
+import { MapLayoutComponent } from './map-layout.component';
+import { SetupElementComponent } from './setup-element.component';
 
 import template from './collect-form.component.html';
+
+import { Matches } from '../../../../../both/collections/matches.collection';
 
 @Component({
   selector: 'collect-form',
   template
 })
-export class CollectFormComponent {
-
-	formElements = ['team-number', 'match-number', 'scale-boxes', 'switch-boxes', 'climbed', 'auton-scale-boxes', 'auton-switch-boxes'];
-
+export class CollectFormComponent implements OnInit {
 
 	currentTab = 'setup';
+	matchNum;
+	teamNum;
+	teleop;
+
+	@ViewChild('map') mapLayout: MapLayoutComponent;
+	@ViewChild('setup') setupComponent: SetupElementComponent;
+	@ViewChild('setupLink') setupLink: ElementRef;
+	@ViewChild('autonLink') autonLink: ElementRef;
+	@ViewChild('teleopLink') teleopLink: ElementRef;
+
+	constructor() {}
+
+	updateSetupVariables(event: any) {
+		this.matchNum = event.matchNum;
+		this.teamNum = event.teamNum;
+		if (!this.teamNum) {
+			this.teamNum = '??';
+		}
+	}
+
+	updateTeleopObject(event: any) {
+		this.teleop = event;
+	}
 
 	changeTab(event: any) {
-		event.preventDefault();
-		var target = event.target;
-		var targetName = target.className;
+		if (event.preventDefault) { event.preventDefault(); }
+		target = event.target;
+		targetName = target.className;
 		if ( !target.className.includes(this.currentTab) ) {
 			this.currentTab = event.target.className;
 			var children = target.parentNode.childNodes;
@@ -40,30 +64,33 @@ export class CollectFormComponent {
 
 	submitForm(event: any) {
 		event.preventDefault();
-		var formSelectors = [];
-		var formVals = {};
 		var alert = '';
-		var error = false;
+		var isError = false;
 
-		this.formElements.forEach(function(el) {
-			formSelectors.push('.' + el);
-			var elValue = $('.'+el)[0].value;
-			if ( elValue == 'on') {
-				formVals[el] = $('.'+el)[0].checked;
-			} else if(elValue === '') {
-				alert = 'Match setup not completed';
-				error = true;
-			} else {
-				formVals[el] = parseInt(elValue);
-			}
-		});
-		//console.log(this.formElements);
-		//console.log(formSelectors);
-		console.log(formVals);
-		if (error) {
+		if (this.teamNum == '??') {
+			isError = true;
+			alert = 'You did not enter a team number.';
+		}
+
+		if (isError) {
 			window.alert(alert);
 			return;
 		}
+
+		match = {
+			matchNum: this.matchNum,
+			teamNum: this.teamNum,
+			totalPickedUp: this.teleop.totalPickedUp,
+      totalPlaced: this.teleop.totalPlaced,
+      climbed: this.teleop.climbed,
+			runs: this.teleop.runs,
+		}
+
+		Matches.insert(match);
+		Session.set('matchNum', this.matchNum + 1);
+		this.mapLayout.ngOnInit();
+		this.setupComponent.ngOnInit();
+		this.setupLink.nativeElement.click();
 	}
 
 }
