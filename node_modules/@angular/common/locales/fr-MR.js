@@ -7,6 +7,12 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    var i = Math.floor(Math.abs(n));
+    if (i === 0 || i === 1)
+        return 1;
+    return 5;
+}
 export default [
     'fr-MR',
     [
@@ -41,12 +47,6 @@ export default [
         ,
     ],
     [',', ' ', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-    ['#,##0.###', '#,##0 %', '#,##0.00 ¤', '#E0'], 'UM', 'ouguiya mauritanien',
-    function (n) {
-        var i = Math.floor(Math.abs(n));
-        if (i === 0 || i === 1)
-            return 1;
-        return 5;
-    }
+    ['#,##0.###', '#,##0 %', '#,##0.00 ¤', '#E0'], 'UM', 'ouguiya mauritanien', plural
 ];
 //# sourceMappingURL=fr-MR.js.map

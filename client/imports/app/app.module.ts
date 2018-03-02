@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { routes } from './app.routes';
 import { CollectPageModule } from '../pages/collect/collect-page.module';
+import { AnalyzePageModule } from '../pages/analyze/analyze-page.module';
 
 
 @NgModule({
@@ -14,8 +14,7 @@ import { CollectPageModule } from '../pages/collect/collect-page.module';
     BrowserModule,
     RouterModule.forRoot(routes),
     CollectPageModule,
-    FormsModule,
-    ReactiveFormsModule,
+    AnalyzePageModule,
   ],
   declarations: [
     AppComponent,

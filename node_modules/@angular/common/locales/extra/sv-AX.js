@@ -5,13 +5,14 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-// THIS CODE IS GENERATED - DO NOT MODIFY
-// See angular/tools/gulp-tasks/cldr/extract.js
 export default [
     [
         ['midn.', 'på morg.', 'på förm.', 'på efterm.', 'på kvällen', 'på natten'],
         ['midnatt', 'på morg.', 'på förm.', 'på efterm.', 'på kvällen', 'på natten'],
-        ['midnatt', 'på morgonen', 'på förmiddagen', 'på eftermiddagen', 'på kvällen', 'på natten']
+        [
+            'midnatt', 'på morgonen', 'på förmiddagen', 'på eftermiddagen', 'på kvällen',
+            'på natten'
+        ]
     ],
     [
         ['midn.', 'morg.', 'förm.', 'efterm.', 'kväll', 'natt'],

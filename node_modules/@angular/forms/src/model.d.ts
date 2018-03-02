@@ -151,7 +151,7 @@ export declare abstract class AbstractControl {
      * Sets the async validators that are active on this control. Calling this
      * will overwrite any existing async validators.
      */
-    setAsyncValidators(newValidator: AsyncValidatorFn | AsyncValidatorFn[]): void;
+    setAsyncValidators(newValidator: AsyncValidatorFn | AsyncValidatorFn[] | null): void;
     /**
      * Empties out the sync validator list.
      */
@@ -225,7 +225,7 @@ export declare abstract class AbstractControl {
         onlySelf?: boolean;
         emitEvent?: boolean;
     }): void;
-    private _updateAncestors(onlySelf);
+    private _updateAncestors(opts);
     setParent(parent: FormGroup | FormArray): void;
     /**
      * Sets the value of the control. Abstract method (implemented in sub-classes).
@@ -740,13 +740,9 @@ export declare class FormArray extends AbstractControl {
      * Insert a new {@link AbstractControl} at the end of the array.
      */
     push(control: AbstractControl): void;
-    /**
-     * Insert a new {@link AbstractControl} at the given `index` in the array.
-     */
+    /** Insert a new {@link AbstractControl} at the given `index` in the array. */
     insert(index: number, control: AbstractControl): void;
-    /**
-     * Remove the control at the given `index` in the array.
-     */
+    /** Remove the control at the given `index` in the array. */
     removeAt(index: number): void;
     /**
      * Replace an existing control.

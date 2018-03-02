@@ -7,8 +7,15 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    var i = Math.floor(Math.abs(n));
+    if (i === Math.floor(i) && i >= 0 && i <= 1)
+        return 1;
+    return 5;
+}
 export default [
-    'pt-MO', [['a.m.', 'p.m.'], , ['da manhã', 'da tarde']], [['a.m.', 'p.m.'], , ['manhã', 'tarde']],
+    'pt-MO', [['a.m.', 'p.m.'], , ['da manhã', 'da tarde']],
+    [['a.m.', 'p.m.'], , ['manhã', 'tarde']],
     [
         ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
         ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'],
@@ -37,12 +44,6 @@ export default [
         '{1} \'às\' {0}',
     ],
     [',', ' ', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-    ['#,##0.###', '#,##0%', '#,##0.00 ¤', '#E0'], 'MOP$', 'Pataca de Macau',
-    function (n) {
-        var i = Math.floor(Math.abs(n));
-        if (i === Math.floor(i) && i >= 0 && i <= 1)
-            return 1;
-        return 5;
-    }
+    ['#,##0.###', '#,##0%', '#,##0.00 ¤', '#E0'], 'MOP$', 'Pataca de Macau', plural
 ];
 //# sourceMappingURL=pt-MO.js.map

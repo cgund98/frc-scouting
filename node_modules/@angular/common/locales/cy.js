@@ -7,6 +7,19 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    if (n === 0)
+        return 0;
+    if (n === 1)
+        return 1;
+    if (n === 2)
+        return 2;
+    if (n === 3)
+        return 3;
+    if (n === 6)
+        return 4;
+    return 5;
+}
 export default [
     'cy',
     [
@@ -58,18 +71,6 @@ export default [
         '{1} \'am\' {0}',
     ],
     ['.', ',', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-    ['#,##0.###', '#,##0%', '¤#,##0.00', '#E0'], '£', 'Punt Prydain', function (n) {
-        if (n === 0)
-            return 0;
-        if (n === 1)
-            return 1;
-        if (n === 2)
-            return 2;
-        if (n === 3)
-            return 3;
-        if (n === 6)
-            return 4;
-        return 5;
-    }
+    ['#,##0.###', '#,##0%', '¤#,##0.00', '#E0'], '£', 'Punt Prydain', plural
 ];
 //# sourceMappingURL=cy.js.map

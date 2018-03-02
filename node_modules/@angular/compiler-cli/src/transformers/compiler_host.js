@@ -107,7 +107,7 @@ var TsCompilerAotCompilerTypeCheckHostAdapter = /** @class */ (function () {
     TsCompilerAotCompilerTypeCheckHostAdapter.prototype.resolveModuleName = function (moduleName, containingFile) {
         var rm = ts.resolveModuleName(moduleName, containingFile.replace(/\\/g, '/'), this.options, this, this.moduleResolutionCache)
             .resolvedModule;
-        if (rm && this.isSourceFile(rm.resolvedFileName)) {
+        if (rm && this.isSourceFile(rm.resolvedFileName) && util_1.DTS.test(rm.resolvedFileName)) {
             // Case: generateCodeForLibraries = true and moduleName is
             // a .d.ts file in a node_modules folder.
             // Need to set isExternalLibraryImport to false so that generated files for that file
@@ -199,7 +199,12 @@ var TsCompilerAotCompilerTypeCheckHostAdapter = /** @class */ (function () {
             resourceName = "./" + resourceName;
         }
         var filePathWithNgResource = this.moduleNameToFileName(addNgResourceSuffix(resourceName), containingFile);
-        return filePathWithNgResource ? stripNgResourceSuffix(filePathWithNgResource) : null;
+        var result = filePathWithNgResource ? stripNgResourceSuffix(filePathWithNgResource) : null;
+        // Used under Bazel to report more specific error with remediation advice
+        if (!result && this.context.reportMissingResource) {
+            this.context.reportMissingResource(resourceName);
+        }
+        return result;
     };
     TsCompilerAotCompilerTypeCheckHostAdapter.prototype.toSummaryFileName = function (fileName, referringSrcFileName) {
         return this.fileNameToModuleName(fileName, referringSrcFileName);
@@ -283,7 +288,7 @@ var TsCompilerAotCompilerTypeCheckHostAdapter = /** @class */ (function () {
             return { generate: false };
         }
         var base = genMatch[1], genSuffix = genMatch[2], suffix = genMatch[3];
-        if (suffix !== 'ts') {
+        if (suffix !== 'ts' && suffix !== 'tsx') {
             return { generate: false };
         }
         var baseFileName;
@@ -295,9 +300,9 @@ var TsCompilerAotCompilerTypeCheckHostAdapter = /** @class */ (function () {
         }
         else {
             // Note: on-the-fly generated files always have a `.ts` suffix,
-            // but the file from which we generated it can be a `.ts`/ `.d.ts`
+            // but the file from which we generated it can be a `.ts`/ `.tsx`/ `.d.ts`
             // (see options.generateCodeForLibraries).
-            baseFileName = [base + ".ts", base + ".d.ts"].find(function (baseFileName) { return _this.isSourceFile(baseFileName) && _this.originalFileExists(baseFileName); });
+            baseFileName = [base + ".ts", base + ".tsx", base + ".d.ts"].find(function (baseFileName) { return _this.isSourceFile(baseFileName) && _this.originalFileExists(baseFileName); });
             if (!baseFileName) {
                 return { generate: false };
             }
@@ -431,6 +436,9 @@ var TsCompilerAotCompilerTypeCheckHostAdapter = /** @class */ (function () {
             throw compiler_1.syntaxError("Error: Resource file not found: " + filePath);
         }
         return assert(this.context.readFile(filePath));
+    };
+    TsCompilerAotCompilerTypeCheckHostAdapter.prototype.getOutputName = function (filePath) {
+        return path.relative(this.getCurrentDirectory(), filePath);
     };
     TsCompilerAotCompilerTypeCheckHostAdapter.prototype.hasBundleIndex = function (filePath) {
         var _this = this;

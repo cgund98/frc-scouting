@@ -1,11 +1,4 @@
 /// <amd-module name="tsickle/src/rewriter" />
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { SourceMapper } from './source_map_utils';
 import * as ts from './typescript';
 /**
@@ -32,7 +25,7 @@ export declare abstract class Rewriter {
      */
     private skipCommentsUpToOffset;
     constructor(file: ts.SourceFile, sourceMapper?: SourceMapper);
-    getOutput(): {
+    getOutput(prefix?: string): {
         output: string;
         diagnostics: ts.Diagnostic[];
     };
@@ -50,7 +43,11 @@ export declare abstract class Rewriter {
     /** writeNode writes a ts.Node, calling this.visit() on its children. */
     writeNode(node: ts.Node, skipComments?: boolean, newLineIfCommentsStripped?: boolean): void;
     writeNodeFrom(node: ts.Node, pos: number, end?: number): void;
-    writeLeadingTrivia(node: ts.Node): void;
+    /**
+     * Writes all leading trivia (whitespace or comments) on node, or all trivia up to the given
+     * position. Also marks those trivia as "already emitted" by shifting the skipCommentsUpTo marker.
+     */
+    writeLeadingTrivia(node: ts.Node, upTo?: number): void;
     addSourceMapping(node: ts.Node): void;
     /**
      * Write a span of the input file as expressed by absolute offsets.

@@ -13,11 +13,12 @@ export declare class TypeTranslator {
     private readonly node;
     private readonly pathBlackList;
     private readonly symbolsToAliasedNames;
+    private readonly ensureSymbolDeclared;
     /**
-     * A list of types we've encountered while emitting; used to avoid getting stuck in recursive
-     * types.
+     * A list of type literals we've encountered while emitting; used to avoid getting stuck in
+     * recursive types.
      */
-    private readonly seenTypes;
+    private readonly seenTypeLiterals;
     /**
      * Whether to write types suitable for an \@externs file. Externs types must not refer to
      * non-externs types (i.e. non ambient types) and need to use fully qualified names.
@@ -30,9 +31,10 @@ export declare class TypeTranslator {
      *     any reference to symbols defined in these paths should by typed
      *     as {?}.
      * @param symbolsToAliasedNames a mapping from symbols (`Foo`) to a name in scope they should be
-     *     emitted as (e.g. `tsickle_forward_declare_1.Foo`).
+     *     emitted as (e.g. `tsickle_forward_declare_1.Foo`). Can be augmented during type
+     *     translation, e.g. to blacklist a symbol.
      */
-    constructor(typeChecker: ts.TypeChecker, node: ts.Node, pathBlackList?: Set<string> | undefined, symbolsToAliasedNames?: Map<ts.Symbol, string>);
+    constructor(typeChecker: ts.TypeChecker, node: ts.Node, pathBlackList?: Set<string> | undefined, symbolsToAliasedNames?: Map<ts.Symbol, string>, ensureSymbolDeclared?: (sym: ts.Symbol) => void);
     /**
      * Converts a ts.Symbol to a string.
      * Other approaches that don't work:
@@ -45,7 +47,7 @@ export declare class TypeTranslator {
      */
     symbolToString(sym: ts.Symbol, useFqn: boolean): string;
     private stripClutzNamespace(name);
-    translate(type: ts.Type): string;
+    translate(type: ts.Type, resolveAlias?: boolean): string;
     private translateUnion(type);
     private translateEnumLiteral(type);
     private translateObject(type);
@@ -57,8 +59,27 @@ export declare class TypeTranslator {
     private translateTypeLiteral(type);
     /** Converts a ts.Signature (function signature) to a Closure function type. */
     private signatureToClosure(sig);
-    private convertParams(sig);
+    /**
+     * Converts parameters for the given signature. Takes parameter declarations as those might not
+     * match the signature parameters (e.g. there might be an additional this parameter). This
+     * difference is handled by the caller, as is converting the "this" parameter.
+     */
+    private convertParams(sig, paramDecls);
     warn(msg: string): void;
     /** @return true if sym should always have type {?}. */
     isBlackListed(symbol: ts.Symbol): boolean;
+    /**
+     * Closure doesn not support type parameters for function types, i.e. generic function types.
+     * Blacklist the symbols declared by them and emit a ? for the types.
+     *
+     * This mutates the given blacklist map. The map's scope is one file, and symbols are
+     * unique objects, so this should neither lead to excessive memory consumption nor introduce
+     * errors.
+     *
+     * @param blacklist a map to store the blacklisted symbols in, with a value of '?'. In practice,
+     *     this is always === this.symbolsToAliasedNames, but we're passing it explicitly to make it
+     *    clear that the map is mutated (in particular when used from outside the class).
+     * @param decls the declarations whose symbols should be blacklisted.
+     */
+    blacklistTypeParameters(blacklist: Map<ts.Symbol, string>, decls: ts.NodeArray<ts.TypeParameterDeclaration> | undefined): void;
 }

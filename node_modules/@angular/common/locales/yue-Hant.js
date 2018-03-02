@@ -7,6 +7,9 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    return 5;
+}
 export default [
     'yue-Hant',
     [
@@ -22,7 +25,10 @@ export default [
     ,
     [
         ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-        ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        [
+            '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月',
+            '12月'
+        ],
     ],
     ,
     [
@@ -37,7 +43,6 @@ export default [
         ,
     ],
     ['.', ',', ';', '%', '+', '-', 'E', '×', '‰', '∞', '非數值', ':'],
-    ['#,##0.###', '#,##0%', '¤#,##0.00', '#E0'], 'HK$', '港幣',
-    function (n) { return 5; }
+    ['#,##0.###', '#,##0%', '¤#,##0.00', '#E0'], 'HK$', '港幣', plural
 ];
 //# sourceMappingURL=yue-Hant.js.map

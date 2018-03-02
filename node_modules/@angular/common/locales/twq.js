@@ -7,6 +7,9 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    return 5;
+}
 export default [
     'twq',
     [
@@ -38,7 +41,6 @@ export default [
         ,
     ],
     ['.', ' ', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-    ['#,##0.###', '#,##0%', '#,##0.00¤', '#E0'], 'CFA', 'CFA Fraŋ (BCEAO)',
-    function (n) { return 5; }
+    ['#,##0.###', '#,##0%', '#,##0.00¤', '#E0'], 'CFA', 'CFA Fraŋ (BCEAO)', plural
 ];
 //# sourceMappingURL=twq.js.map

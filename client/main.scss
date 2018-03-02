@@ -56,12 +56,32 @@ a {
 
 
 // Theme 
+nav.main {
+  position: absolute;
+  top: 3em;
+  font-weight: 800;
+  color: white;
 
+  a {
+    color: white;
+    margin-right: 2em;
+    font-size: 1.15rem;
+    border-bottom: 2px $green solid;
+    transition: .15s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      border-bottom: 2px solid white;
+    }
+  }
+}
 h4.head {
   text-align: center;
   font-size: 1.5rem !important;
   margin: 0 .5em;
   font-weight: 800;
+  &.analyze {
+    margin: 2em .5em;
+  }
 }
 h4.subhead { 
   text-align: center;
@@ -529,6 +549,48 @@ nav.map-nav {
     &.active {
       border-bottom: 3px solid white;
       font-size: .95em;
+    }
+  }
+}
+
+// Analyze Page
+.card {
+  background: white;
+  color: $dark;
+  padding: 1em 1.5em;
+  border-radius: 3px;
+  -webkit-box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
+  box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.25);
+}
+
+.analyze-wrapper {
+  width: 100%;
+  min-height: 20em;
+
+  ngx-datatable.material {
+    box-shadow: none;
+
+    .datatable-header {
+      // margin-bottom: .5em;
+      border-bottom: 2px solid $dark;
+      height: 50px !important;
+    }
+    .datatable-header-cell {
+      font-weight: 800 !important;
+      // text-transform: uppercase;
+      font-size: 1rem !important;
+      color: $dark !important;
+      // min-width: 200px;
+      text-align: center !important;
+    }
+    .datatable-body-cell {
+      // margin: .5em 0;
+      padding-left: 1.5em !important;
+      border-bottom: 2px solid #e6e6e6;
+      text-align: center !important;
+      padding-right: 1.15em;
+      // min-width: 200px;
     }
   }
 }

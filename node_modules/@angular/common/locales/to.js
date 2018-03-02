@@ -7,6 +7,9 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    return 5;
+}
 export default [
     'to', [['AM', 'PM'], , ['hengihengi', 'efiafi']], [['AM', 'PM'], , ['HH', 'EA']],
     [
@@ -17,10 +20,12 @@ export default [
     ,
     [
         ['S', 'F', 'M', 'E', 'M', 'S', 'S', 'A', 'S', 'O', 'N', 'T'],
-        ['Sān', 'Fēp', 'Maʻa', 'ʻEpe', 'Mē', 'Sun', 'Siu', 'ʻAok', 'Sep', 'ʻOka', 'Nōv', 'Tīs'],
         [
-            'Sānuali', 'Fēpueli', 'Maʻasi', 'ʻEpeleli', 'Mē', 'Sune', 'Siulai', 'ʻAokosi', 'Sepitema',
-            'ʻOkatopa', 'Nōvema', 'Tīsema'
+            'Sān', 'Fēp', 'Maʻa', 'ʻEpe', 'Mē', 'Sun', 'Siu', 'ʻAok', 'Sep', 'ʻOka', 'Nōv', 'Tīs'
+        ],
+        [
+            'Sānuali', 'Fēpueli', 'Maʻasi', 'ʻEpeleli', 'Mē', 'Sune', 'Siulai', 'ʻAokosi',
+            'Sepitema', 'ʻOkatopa', 'Nōvema', 'Tīsema'
         ]
     ],
     ,
@@ -33,7 +38,6 @@ export default [
         ,
     ],
     ['.', ',', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'TF', ':'],
-    ['#,##0.###', '#,##0%', '¤ #,##0.00', '#E0'], 'T$', 'Paʻanga fakatonga',
-    function (n) { return 5; }
+    ['#,##0.###', '#,##0%', '¤ #,##0.00', '#E0'], 'T$', 'Paʻanga fakatonga', plural
 ];
 //# sourceMappingURL=to.js.map

@@ -7,6 +7,11 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    if (n === 1)
+        return 1;
+    return 5;
+}
 export default [
     'es-BR',
     [
@@ -47,10 +52,6 @@ export default [
         '{1}, {0}',
     ],
     ['.', ',', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-    ['#,##0.###', '#,##0 %', '¤#,##0.00', '#E0'], 'R$', 'real brasileño', function (n) {
-        if (n === 1)
-            return 1;
-        return 5;
-    }
+    ['#,##0.###', '#,##0 %', '¤#,##0.00', '#E0'], 'R$', 'real brasileño', plural
 ];
 //# sourceMappingURL=es-BR.js.map

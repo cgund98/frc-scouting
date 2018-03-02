@@ -7,6 +7,9 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    return 5;
+}
 export default [
     'cu',
     [
@@ -37,7 +40,6 @@ export default [
         ,
     ],
     ['.', ',', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-    ['#,##0.###', '#,##0%', '¤ #,##0.00', '#E0'], '₽', 'RUB',
-    function (n) { return 5; }
+    ['#,##0.###', '#,##0%', '¤ #,##0.00', '#E0'], '₽', 'RUB', plural
 ];
 //# sourceMappingURL=cu.js.map

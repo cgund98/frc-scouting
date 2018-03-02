@@ -7,6 +7,15 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    if (n === 1 || n === 11)
+        return 1;
+    if (n === 2 || n === 12)
+        return 2;
+    if (n === Math.floor(n) && (n >= 3 && n <= 10 || n >= 13 && n <= 19))
+        return 3;
+    return 5;
+}
 export default [
     'gd',
     [
@@ -52,15 +61,6 @@ export default [
         ,
     ],
     ['.', ',', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-    ['#,##0.###', '#,##0%', '¤#,##0.00', '#E0'], '£', 'Punnd Sasannach',
-    function (n) {
-        if (n === 1 || n === 11)
-            return 1;
-        if (n === 2 || n === 12)
-            return 2;
-        if (n === Math.floor(n) && (n >= 3 && n <= 10 || n >= 13 && n <= 19))
-            return 3;
-        return 5;
-    }
+    ['#,##0.###', '#,##0%', '¤#,##0.00', '#E0'], '£', 'Punnd Sasannach', plural
 ];
 //# sourceMappingURL=gd.js.map

@@ -73,7 +73,7 @@ export declare function collectImportedNames(typeChecker: ts.TypeChecker, decl: 
     declarationNames: ts.Identifier[];
 }>;
 export declare function visitClassContentIncludingDecorators(classDecl: ts.ClassDeclaration, rewriter: Rewriter, decoratorVisitor?: DecoratorClassVisitor): void;
-export declare function convertDecorators(typeChecker: ts.TypeChecker, sourceFile: ts.SourceFile, sourceMapper?: SourceMapper): {
+export declare function convertDecorators(typeChecker: ts.TypeChecker, sourceFile: ts.SourceFile, sourceMapper: SourceMapper): {
     output: string;
     diagnostics: ts.Diagnostic[];
 };

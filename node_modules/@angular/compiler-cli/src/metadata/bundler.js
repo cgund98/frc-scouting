@@ -497,8 +497,10 @@ var CompilerHostAdapter = /** @class */ (function () {
         this.collector = new collector_1.MetadataCollector();
     }
     CompilerHostAdapter.prototype.getMetadataFor = function (fileName) {
+        if (!this.host.fileExists(fileName + '.ts'))
+            return undefined;
         var sourceFile = this.host.getSourceFile(fileName + '.ts', ts.ScriptTarget.Latest);
-        return this.collector.getMetadata(sourceFile);
+        return sourceFile && this.collector.getMetadata(sourceFile);
     };
     return CompilerHostAdapter;
 }());

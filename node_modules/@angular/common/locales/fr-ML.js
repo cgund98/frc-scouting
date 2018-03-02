@@ -7,6 +7,12 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    var i = Math.floor(Math.abs(n));
+    if (i === 0 || i === 1)
+        return 1;
+    return 5;
+}
 export default [
     'fr-ML',
     [
@@ -41,12 +47,6 @@ export default [
         '{1} \'à\' {0}',
     ],
     [',', ' ', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-    ['#,##0.###', '#,##0 %', '#,##0.00 ¤', '#E0'], 'CFA', 'franc CFA (BCEAO)',
-    function (n) {
-        var i = Math.floor(Math.abs(n));
-        if (i === 0 || i === 1)
-            return 1;
-        return 5;
-    }
+    ['#,##0.###', '#,##0 %', '#,##0.00 ¤', '#E0'], 'CFA', 'franc CFA (BCEAO)', plural
 ];
 //# sourceMappingURL=fr-ML.js.map

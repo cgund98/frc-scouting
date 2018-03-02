@@ -7,6 +7,11 @@
  */
 // THIS CODE IS GENERATED - DO NOT MODIFY
 // See angular/tools/gulp-tasks/cldr/extract.js
+function plural(n) {
+    if (n === 1)
+        return 1;
+    return 5;
+}
 export default [
     'es-PA',
     [
@@ -44,10 +49,6 @@ export default [
         '{1}, {0}',
     ],
     ['.', ',', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-    ['#,##0.###', '#,##0 %', '¤#,##0.00', '#E0'], 'B/.', 'balboa panameño', function (n) {
-        if (n === 1)
-            return 1;
-        return 5;
-    }
+    ['#,##0.###', '#,##0 %', '¤#,##0.00', '#E0'], 'B/.', 'balboa panameño', plural
 ];
 //# sourceMappingURL=es-PA.js.map

@@ -5,15 +5,23 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-// THIS CODE IS GENERATED - DO NOT MODIFY
-// See angular/tools/gulp-tasks/cldr/extract.js
 export default [
     [
-        ['შუაღამეს', 'შუადღ.', 'დილ.', 'ნაშუადღ.', 'საღ.', 'ღამ.'], ,
-        ['შუაღამეს', 'შუადღეს', 'დილით', 'ნაშუადღევს', 'საღამოს', 'ღამით']
+        [
+            'შუაღამეს', 'შუადღ.', 'დილ.', 'ნაშუადღ.',
+            'საღ.', 'ღამ.'
+        ],
+        ,
+        [
+            'შუაღამეს', 'შუადღეს', 'დილით',
+            'ნაშუადღევს', 'საღამოს', 'ღამით'
+        ]
     ],
     [
-        ['შუაღამე', 'შუადღე', 'დილა', 'ნაშუადღევი', 'საღამო', 'ღამე'],
+        [
+            'შუაღამე', 'შუადღე', 'დილა',
+            'ნაშუადღევი', 'საღამო', 'ღამე'
+        ],
         ,
     ],
     [
