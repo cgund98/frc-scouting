@@ -1,0 +1,23 @@
+<div class="data-collect-element card" (click)="refresh()">
+  <div class="map-layout-wrapper">
+
+    <h3>MAP LAYOUT</h3>
+
+    <div class="field-wrapper">
+
+      <div class="box-place left" #box1 id="left-side-powerup">
+        <p>{{ box1Count }}</p>
+      </div>
+
+      <heat-block position="left" [matches]="matches"></heat-block>
+      <heat-block position="middle" [matches]="matches"></heat-block>
+      <heat-block position="right" [matches]="matches"></heat-block>
+
+      <div class="box-place right" #box2 id="right-side-powerup">
+        <p>{{ box2Count }}</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -17,23 +17,25 @@ export class AnalyzeWindowComponent implements OnInit {
     {teamNum: "Please click to refresh"}
   ];
   columns = [
-    { name: 'Team Number', prop: 'teamNum', width: 200,
+    { name: 'Team Number', prop: 'teamNum', width: 150,
       height: 50, },
-    { name: 'Total Placed', prop: 'totalPlaced', width: 200,
+    { name: 'Total Placed', prop: 'totalPlaced', width: 150,
       height: 50, },
-    { name: 'High Placed', prop: 'highPlaced', width: 200,
+    { name: 'High Placed', prop: 'highPlaced', width: 150,
       height: 50, },
-    { name: 'Low Placed', prop: 'lowPlaced', width: 200,
+    { name: 'Low Placed', prop: 'lowPlaced', width: 150,
       height: 50, },
     { name: 'Climbs', prop: 'climbs', width: 100,
       height: 50, },
-      { name: 'Avg. Run Time', prop: 'avgRunTime', width: 200,
+      { name: 'Avg. Run Time', prop: 'avgRunTime', width: 150,
       height: 50, },
   ];
 
   ngOnInit() {
     this.matches = Matches.find({}).fetch();
-    console.log(this.matches);
+    if (this.matches.length > 0) {
+      this.refresh();
+    }
   }
 
   refresh() {
@@ -132,7 +134,6 @@ export class AnalyzeWindowComponent implements OnInit {
       row.avgRunTime = Math.round(totalTimes / teamStat.runTimes.length * 10) / 10;
       rows.push(row);
     }
-    console.log(rows);
     this.rows = rows;
   }
 

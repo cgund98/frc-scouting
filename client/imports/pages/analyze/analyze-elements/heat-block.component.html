@@ -1,0 +1,26 @@
+<div class="field-block-wrapper">
+  
+  <div class="col-1">
+    <div class="box-pickup" #box1 id="{{ position + '-left-' + sideComponents }}">
+      <p>{{ box1Count }}</p>
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="box-place" #box2 id="{{ position + '-top-place' }}">
+      <p>{{ box2Count }}</p>
+    </div>
+    <div class="obstacle"></div>
+
+    <div class="box-place" #box3 id="{{ position + '-bottom-place' }}">
+      <p>{{ box3Count }}</p>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="box-pickup" #box4 id="{{ position + '-right-' + sideComponents }}">
+      <p>{{ box4Count }}</p>
+    </div>
+  </div>
+
+</div>

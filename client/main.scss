@@ -197,8 +197,9 @@ option {
       }
     }
   }
-  map-layout {
+  map-layout, heatmap {
     grid-column: 1/12;
+    width: 100%;
     .data-collect-element {
       width: 100%;
       padding: .5em 1.5em;
@@ -390,7 +391,7 @@ $field-block-icon-size: 25px;
     margin: .5em 0;
   }
   .field-wrapper {
-    field-block {
+    field-block, heat-block {
       display: inline-block;
       margin: 0 2em;
       margin-top: 1em;
@@ -593,4 +594,28 @@ nav.map-nav {
       // min-width: 200px;
     }
   }
+}
+heatmap {
+  text-align: center;
+  .data-collect-element {
+    padding-bottom: 3em;
+  }
+}
+heat-block {
+  p {
+    text-align: center;
+  }
+}
+button {
+  color: $green;
+  background: white;
+  transition: .15s ease-in-out;
+  font-size: 1em;
+  padding: .5em 1.5em;
+  cursor: pointer;
+  margin:auto;
+  text-align: center;
+}
+.button-wrapper {
+  padding: 2em 0;
 }

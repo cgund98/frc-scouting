@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import template from './analyze-page.component.html';
 
@@ -7,4 +7,14 @@ import template from './analyze-page.component.html';
   template
 })
 
-export class AnalyzePageComponent {}
+export class AnalyzePageComponent implements OnInit {
+  analysisTab;
+
+  ngOnInit() {
+    this.analysisTab = true;
+  }
+  changeTab() {
+    this.analysisTab = !this.analysisTab;
+  }
+
+}
