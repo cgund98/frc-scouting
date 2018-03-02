@@ -21,7 +21,11 @@ export class AnalyzeWindowComponent implements OnInit {
       height: 50, },
     { name: 'Total Placed', prop: 'totalPlaced', width: 200,
       height: 50, },
-    { name: 'Climbs', prop: 'climbs', width: 200,
+    { name: 'High Placed', prop: 'highPlaced', width: 200,
+      height: 50, },
+    { name: 'Low Placed', prop: 'lowPlaced', width: 200,
+      height: 50, },
+    { name: 'Climbs', prop: 'climbs', width: 100,
       height: 50, },
       { name: 'Avg. Run Time', prop: 'avgRunTime', width: 200,
       height: 50, },
@@ -59,6 +63,11 @@ export class AnalyzeWindowComponent implements OnInit {
             var run = match.runs[k];
             if (!run.missedShot) {
               team.totalPlaced += 1;
+              if (run.placeLocation.includes('middle')) {
+                team.highPlaced += 1;
+              } else {
+                team.lowPlaced += 1;
+              }
             }
 
             if (run.timeElapsed) {
@@ -75,6 +84,8 @@ export class AnalyzeWindowComponent implements OnInit {
         team.totalPlaced = match.totalPlaced;
         team.climbs = 0;
         team.totalPlaced = 0;
+        team.lowPlaced = 0;
+        team.highPlaced = 0;
         team.runs = match.runs.length;
         if (match.climbed) {
           team.climbs += 1;
@@ -87,6 +98,11 @@ export class AnalyzeWindowComponent implements OnInit {
           var run = match.runs[k];
           if (!run.missedShot) {
             team.totalPlaced += 1;
+            if (run.placeLocation.includes('middle')) {
+              team.highPlaced += 1;
+            } else {
+              team.lowPlaced += 1;
+            }
           }
 
           if (run.timeElapsed) {
@@ -106,6 +122,8 @@ export class AnalyzeWindowComponent implements OnInit {
       row.totalPlaced = teamStat.totalPlaced;
       row.climbs = teamStat.climbs;
       row.teamNum = teamStat.teamNum;
+      row.lowPlaced = teamStat.lowPlaced;
+      row.highPlaced = teamStat.highPlaced;
 
       var totalTimes = 0;
       for (var j=0; j < teamStat.runTimes.length; j++) {
