@@ -25,10 +25,13 @@ export class AnalyzeWindowComponent implements OnInit {
       height: 50, },
     { name: 'Low Placed', prop: 'lowPlaced', width: 150,
       height: 50, },
+    { name: 'Auton High', prop: 'highAutonPlaced', width: 75},
+    { name: 'Auton Low', prop: 'lowAutonPlaced', width: 75, },
     { name: 'Climbs', prop: 'climbs', width: 100,
       height: 50, },
       { name: 'Avg. Run Time', prop: 'avgRunTime', width: 150,
       height: 50, },
+      { name: 'Matches', prop: 'matchesPlayed', width: 100 },
   ];
 
   ngOnInit() {
@@ -88,6 +91,8 @@ export class AnalyzeWindowComponent implements OnInit {
         team.totalPlaced = 0;
         team.lowPlaced = 0;
         team.highPlaced = 0;
+        team.lowAutonPlaced = 0;
+        team.highAutonPlaced = 0;
         team.runs = match.runs.length;
         if (match.climbed) {
           team.climbs += 1;
@@ -102,8 +107,14 @@ export class AnalyzeWindowComponent implements OnInit {
             team.totalPlaced += 1;
             if (run.placeLocation.includes('middle')) {
               team.highPlaced += 1;
+              if (run.isAuton) {
+                team.highAutonPlaced +=1;
+              }
             } else {
               team.lowPlaced += 1;
+              if (run.isAuton) {
+                team.lowAutonPlaced +=1;
+              }
             }
           }
 
@@ -126,6 +137,9 @@ export class AnalyzeWindowComponent implements OnInit {
       row.teamNum = teamStat.teamNum;
       row.lowPlaced = teamStat.lowPlaced;
       row.highPlaced = teamStat.highPlaced;
+      row.lowAutonPlaced = teamStat.lowAutonPlaced;
+      row.highAutonPlaced = teamStat.highAutonPlaced;
+      row.matchesPlayed = teamStat.matchesPlayed;
 
       var totalTimes = 0;
       for (var j=0; j < teamStat.runTimes.length; j++) {

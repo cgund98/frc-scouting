@@ -89,6 +89,12 @@ export class CollectFormComponent implements OnInit {
 			return;
 		}
 
+		var notes = prompt('Match Notes: ');
+		if (notes == null) {
+			window.alert('Submit cancelled, please hit okay to submit.');
+			return;
+		}
+
 		var match = {
 			matchNum: this.matchNum,
 			teamNum: this.teamNum,
@@ -97,6 +103,8 @@ export class CollectFormComponent implements OnInit {
       climbed: this.teleop.climbed,
 			runs: this.teleop.runs,
 			autonLineCrossed: this.teleop.autonLineCrossed,
+			event: '2018inmis',
+			notes: notes,
 		}
 
 		Matches.insert(match);
