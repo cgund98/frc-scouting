@@ -619,3 +619,74 @@ button {
 .button-wrapper {
   padding: 2em 0;
 }
+
+prematch-window h3 {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+prematch-window .col {
+  width: 33%;
+  display: inline-block;
+  padding-left: .5em;
+  padding-right: .5em;
+
+  &.middle {
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+  }
+
+  .num-wrapper {
+    width: 50%;
+    margin-left: 25%;
+
+    input.number {
+      width: 100%;
+      border: none;
+      text-align: center;
+      border-bottom: 3px solid $green;
+      font-size: 1.5em;
+      font-weight: normal;
+    }
+    p {
+      text-align: center;
+      font-weight: 800;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  ngx-datatable.material {
+    box-shadow: none;
+
+    .datatable-header {
+      // margin-bottom: .5em;
+      border-bottom: 2px solid $dark;
+      height: 50px !important;
+    }
+    .datatable-header-cell {
+      font-weight: 800 !important;
+      // text-transform: uppercase;
+      font-size: 1rem !important;
+      color: $dark !important;
+      // min-width: 200px;
+      text-align: center !important;
+    }
+    .datatable-body-cell {
+      // margin: .5em 0;
+      padding-left: 1.5em !important;
+      border-bottom: 2px solid #e6e6e6;
+      text-align: center !important;
+      padding-right: 1.15em;
+      // min-width: 200px;
+    }
+  }
+}
+.datatable-header-cell-label p {
+  margin: 0;
+  color: $green;
+  font-size: 1.15em;
+}
+.line {
+  margin: 1em 0;
+  border-top: 1px solid #e6e6e6;
+}

@@ -17,15 +17,15 @@ export class AnalyzeWindowComponent implements OnInit {
     {teamNum: "Please click to refresh"}
   ];
   columns = [
-    { name: 'match #', prop: 'matchNum', width: 75,
-      height: 50, },
+    // { name: 'match #', prop: 'matchNum', width: 75,
+      // height: 50, },
     { name: 'Team #', prop: 'teamNum', width: 75,
       height: 50, },
     { name: 'Total Placed', prop: 'totalPlaced', width: 100,
       height: 50, },
-    { name: 'Teleop High', prop: 'highTeleopPlaced', width: 100,
+    { name: 'Total High', prop: 'highPlaced', width: 100,
       height: 50, },
-    { name: 'Teleop Low', prop: 'lowTeleopPlaced', width: 100,
+    { name: 'Total Low', prop: 'lowPlaced', width: 100,
       height: 50, },
     { name: 'Auton High', prop: 'highAutonPlaced', width: 100},
     { name: 'Auton Low', prop: 'lowAutonPlaced', width: 100, },
@@ -131,106 +131,106 @@ export class AnalyzeWindowComponent implements OnInit {
 
     var rows = [];
 
-    // for (var i=0; i < teamStats.length; i++) {
-    //   var row = {};
-    //   var teamStat = teamStats[i];
-    //   row.totalPlaced = teamStat.totalPlaced;
-    //   row.climbs = teamStat.climbs;
-    //   row.teamNum = teamStat.teamNum;
-    //   row.lowPlaced = teamStat.lowPlaced;
-    //   row.highPlaced = teamStat.highPlaced;
-    //   row.lowAutonPlaced = teamStat.lowAutonPlaced;
-    //   row.highAutonPlaced = teamStat.highAutonPlaced;
-    //   row.matchesPlayed = teamStat.matchesPlayed;
-
-    //   var totalTimes = 0;
-    //   for (var j=0; j < teamStat.runTimes.length; j++) {
-    //     totalTimes += teamStat.runTimes[j];
-    //   }
-    //   row.avgRunTime = Math.round(totalTimes / teamStat.runTimes.length * 10) / 10;
-    //   rows.push(row);
-    // }
-
-    for (var i=0; i < this.matches.length; i++) {
+    for (var i=0; i < teamStats.length; i++) {
       var row = {};
-      var match = this.matches[i];
-      row.matchNum = match.matchNum;
-      row.totalPlaced = match.totalPlaced;
-      row.climbs = match.climbed;
-      row.teamNum = match.teamNum;
-      row.lowTeleopPlaced = 0;
-      row.highTeleopPlaced = 0;
-      row.lowAutonPlaced = 0;
-      row.highAutonPlaced = 0;
-      row.matchesPlayed = match.runs.length;
-
-      var highAutonAttempted = 0;
-      var highTeleopAttempted = 0;
-      var lowAutonAttempted = 0;
-      var lowTeleopAttempted = 0;
-      var lowTeleopPlaced = 0;
-      var highTeleopPlaced = 0;
-      var lowAutonPlaced = 0;
-      var highAutonPlaced = 0;
+      var teamStat = teamStats[i];
+      row.totalPlaced = teamStat.totalPlaced;
+      row.climbs = teamStat.climbs;
+      row.teamNum = teamStat.teamNum;
+      row.lowPlaced = teamStat.lowPlaced;
+      row.highPlaced = teamStat.highPlaced;
+      row.lowAutonPlaced = teamStat.lowAutonPlaced;
+      row.highAutonPlaced = teamStat.highAutonPlaced;
+      row.matchesPlayed = teamStat.matchesPlayed;
 
       var totalTimes = 0;
-      for (var j=0; j < match.runs.length; j++) {
-        totalTimes += match.runs[j].timeElapsed;
+      for (var j=0; j < teamStat.runTimes.length; j++) {
+        totalTimes += teamStat.runTimes[j];
       }
-
-      if (!match.runTimes) {
-        match.runTimes = []
-      }
-
-      for (var k=0; k < match.runs.length; k++) {
-          var run = match.runs[k];
-          if (!run.missedShot) {
-            //row.totalPlaced += 1;
-            if (run.placeLocation.includes('middle')) {
-              if (run.isAuton) {
-                highAutonPlaced +=1;
-                highAutonAttempted +=1;
-              } else {
-                highTeleopPlaced += 1;
-                highTeleopAttempted += 1;
-              }
-            } else {
-              if (run.isAuton) {
-                lowAutonPlaced +=1;
-                lowAutonAttempted +=1;
-              } else {
-                lowTeleopPlaced += 1;
-                lowTeleopAttempted += 1;
-              }
-            }
-          } else {
-            if (run.placeLocation.includes('middle')) {
-              if (run.isAuton) {
-                highAutonAttempted +=1;
-              } else {
-                highTeleopAttempted += 1;
-              }
-            } else {
-              if (run.isAuton) {
-                lowAutonAttempted +=1;
-              } else {
-                lowTeleopAttempted += 1;
-              }
-            }
-          }
-
-          if (run.timeElapsed) {
-            match.runTimes.push(run.timeElapsed);
-          }
-        }
-
-      row.lowTeleopPlaced = lowTeleopPlaced + " / " + lowTeleopAttempted;
-      row.highTeleopPlaced = highTeleopPlaced + " / " + highTeleopAttempted;
-      row.lowAutonPlaced = lowAutonPlaced + " / " + lowAutonAttempted;
-      row.highAutonPlaced = highAutonPlaced + " / " + highAutonAttempted;
-      row.avgRunTime = Math.round(totalTimes / match.runTimes.length * 10) / 10;
+      row.avgRunTime = Math.round(totalTimes / teamStat.runTimes.length * 10) / 10;
       rows.push(row);
     }
+
+    // for (var i=0; i < this.matches.length; i++) {
+    //   var row = {};
+    //   var match = this.matches[i];
+    //   row.matchNum = match.matchNum;
+    //   row.totalPlaced = match.totalPlaced;
+    //   row.climbs = match.climbed;
+    //   row.teamNum = match.teamNum;
+    //   row.lowTeleopPlaced = 0;
+    //   row.highTeleopPlaced = 0;
+    //   row.lowAutonPlaced = 0;
+    //   row.highAutonPlaced = 0;
+    //   row.matchesPlayed = match.runs.length;
+
+    //   var highAutonAttempted = 0;
+    //   var highTeleopAttempted = 0;
+    //   var lowAutonAttempted = 0;
+    //   var lowTeleopAttempted = 0;
+    //   var lowTeleopPlaced = 0;
+    //   var highTeleopPlaced = 0;
+    //   var lowAutonPlaced = 0;
+    //   var highAutonPlaced = 0;
+
+    //   var totalTimes = 0;
+    //   for (var j=0; j < match.runs.length; j++) {
+    //     totalTimes += match.runs[j].timeElapsed;
+    //   }
+
+    //   if (!match.runTimes) {
+    //     match.runTimes = []
+    //   }
+
+    //   for (var k=0; k < match.runs.length; k++) {
+    //       var run = match.runs[k];
+    //       if (!run.missedShot) {
+    //         //row.totalPlaced += 1;
+    //         if (run.placeLocation.includes('middle')) {
+    //           if (run.isAuton) {
+    //             highAutonPlaced +=1;
+    //             highAutonAttempted +=1;
+    //           } else {
+    //             highTeleopPlaced += 1;
+    //             highTeleopAttempted += 1;
+    //           }
+    //         } else {
+    //           if (run.isAuton) {
+    //             lowAutonPlaced +=1;
+    //             lowAutonAttempted +=1;
+    //           } else {
+    //             lowTeleopPlaced += 1;
+    //             lowTeleopAttempted += 1;
+    //           }
+    //         }
+    //       } else {
+    //         if (run.placeLocation.includes('middle')) {
+    //           if (run.isAuton) {
+    //             highAutonAttempted +=1;
+    //           } else {
+    //             highTeleopAttempted += 1;
+    //           }
+    //         } else {
+    //           if (run.isAuton) {
+    //             lowAutonAttempted +=1;
+    //           } else {
+    //             lowTeleopAttempted += 1;
+    //           }
+    //         }
+    //       }
+
+    //       if (run.timeElapsed) {
+    //         match.runTimes.push(run.timeElapsed);
+    //       }
+    //     }
+
+    //   row.lowTeleopPlaced = lowTeleopPlaced + " / " + lowTeleopAttempted;
+    //   row.highTeleopPlaced = highTeleopPlaced + " / " + highTeleopAttempted;
+    //   row.lowAutonPlaced = lowAutonPlaced + " / " + lowAutonAttempted;
+    //   row.highAutonPlaced = highAutonPlaced + " / " + highAutonAttempted;
+    //   row.avgRunTime = Math.round(totalTimes / match.runTimes.length * 10) / 10;
+    //   rows.push(row);
+    // }
 
     this.rows = rows;
   }

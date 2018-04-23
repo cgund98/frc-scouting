@@ -1,0 +1,17 @@
+<div (click)="refresh()">
+<div class="num-wrapper">
+  <input class="number noselect team-number" type="number" name="teamNum" value="{{ teamNum }}" (keyup)="updateTeamNum($event)">
+  <p>TEAM #</p>
+</div>
+
+<ngx-datatable class="material"
+  [rows]="autonRows"
+  [columns]="autonColumns">
+</ngx-datatable>
+
+<ngx-datatable class="material"
+  [rows]="teleopRows"
+  [columns]="teleopColumns">
+</ngx-datatable>
+
+</div>

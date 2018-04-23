@@ -2,7 +2,8 @@
   <h4 class="head analyze">Analyze</h4>
 
   <analyze-window [class.hidden]="!analysisTab"></analyze-window>
-  <heatmap [class.hidden]="analysisTab"></heatmap>
+  <!-- <heatmap [class.hidden]="analysisTab"></heatmap> -->
+  <prematch-window [class.hidden]="analysisTab"></prematch-window>
   <div class="button-wrapper">
     <button (click)="changeTab()" type="button">Switcharooni</button>
   </div>
