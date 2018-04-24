@@ -16,6 +16,7 @@ export class CollectFormComponent implements OnInit {
 	currentTab = 'setup';
 	matchNum;
 	teamNum;
+	posNum;
 	teleop;
 	isAuton;
 
@@ -41,6 +42,8 @@ export class CollectFormComponent implements OnInit {
 	updateSetupVariables(event: any) {
 		this.matchNum = event.matchNum;
 		this.teamNum = event.teamNum;
+		this.posNum = event.posNum;
+		this.color = event.color;
 		if (!this.teamNum) {
 			this.teamNum = '??';
 		}
@@ -98,6 +101,8 @@ export class CollectFormComponent implements OnInit {
 		var match = {
 			matchNum: this.matchNum,
 			teamNum: this.teamNum,
+			posNum: this.posNum,
+			color: this.color,
 			totalPickedUp: this.teleop.totalPickedUp,
       totalPlaced: this.teleop.totalPlaced,
       climbed: this.teleop.climbed,

@@ -1,6 +1,8 @@
 // App
 $green: #3FC380;
 $dark: #222222;
+$red: #F03434;
+$blue: #22A7F0;
 
 //Imports
 @import './mixins';
@@ -260,6 +262,22 @@ option {
           margin: .5em 0;
           font-weight: 800;
           font-size: .8em;
+        }
+      }
+
+      .toggle-wrapper {
+        margin: 0;
+        float: right;
+        display: inline-block;
+        p {
+          padding: 1em 0;
+          color: white;
+          &.blue {
+            background: $blue;
+          }
+          &.red { 
+            background: $red;
+          }
         }
       }
 

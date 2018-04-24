@@ -55,6 +55,10 @@ export class PrematchBlockComponent implements OnInit {
     this.update.emit(out);
   }
 
+  ngOnChanges() {
+    this.refresh();
+  }
+
   refresh() {
 
     var teamStats = this.getTeamStats();
