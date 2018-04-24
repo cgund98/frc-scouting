@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter,
+         OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 
 import template from './prematch-block.component.html';
 
@@ -12,7 +13,10 @@ import { Matches } from '../../../../../both/collections/matches.collection';
 export class PrematchBlockComponent implements OnInit {
 
   matches;
-  teamNum;
+  @Input() teamNum: number;
+
+  @Output() update = new EventEmitter();
+
   autonRows = [{propName: "Click me!"},];
   teleopRows;
 
@@ -33,7 +37,6 @@ export class PrematchBlockComponent implements OnInit {
 
   ngOnInit() {
     this.matches = Matches.find({}).fetch();
-    this.teamNum = 1747;
     if (this.matches.length > 0) {
       this.refresh();
     }
@@ -42,12 +45,18 @@ export class PrematchBlockComponent implements OnInit {
   updateTeamNum(event: any) {
     this.teamNum = parseInt(event.target.value);
     this.refresh();
+    this.emit();
+  }
+
+  emit() {
+    var out = {
+      teamNum: this.teamNum
+    };
+    this.update.emit(out);
   }
 
   refresh() {
 
-    console.log('Refreshing...');
-    
     var teamStats = this.getTeamStats();
 
     if (teamStats.missing) {

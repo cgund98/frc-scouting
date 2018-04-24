@@ -1,21 +1,24 @@
 <div class="data-collect-element card">
-
+  <div class="num-wrapper match-selector">
+    <input class="number noselect team-number" type="number" name="teamNum" value="{{ matchNum }}" (keyup)="updateMatchNum($event)">
+    <p>MATCH #</p>
+  </div>
   <!-- <h3>TEAM 1</h3> -->
   <div class="col">
     <div class="prematch-block-wrapper">
-      <prematch-block></prematch-block>
+      <prematch-block [teamNum]="blueTeam1"></prematch-block>
     </div>
   </div>
 
   <div class="col middle">
     <div class="prematch-block-wrapper">
-      <prematch-block></prematch-block>
+      <prematch-block [teamNum]="blueTeam2"></prematch-block>
     </div>
   </div>
 
   <div class="col">
     <div class="prematch-block-wrapper">
-      <prematch-block></prematch-block>
+      <prematch-block [teamNum]="blueTeam3"></prematch-block>
     </div>
   </div>
 
@@ -23,19 +26,19 @@
   <!-- <h3>TEAM 2</h3> -->
   <div class="col">
     <div class="prematch-block-wrapper">
-      <prematch-block></prematch-block>
+      <prematch-block [teamNum]="redTeam1"></prematch-block>
     </div>
   </div>
 
   <div class="col middle">
     <div class="prematch-block-wrapper">
-      <prematch-block></prematch-block>
+      <prematch-block [teamNum]="redTeam2"></prematch-block>
     </div>
   </div>
 
   <div class="col">
     <div class="prematch-block-wrapper">
-      <prematch-block></prematch-block>
+      <prematch-block [teamNum]="redTeam3"></prematch-block>
     </div>
   </div>
 
