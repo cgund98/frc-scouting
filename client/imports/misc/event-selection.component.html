@@ -1,0 +1,8 @@
+<div class="card event-selection-wrapper" *ngIf="open">
+    <button class="remove" (click)="open=false;">&#10006;</button>
+    <h2>Select Competition</h2>
+    <input class="number" placeholder="e.g. tipp2018" [formControl]="competition"></input>
+    <p>**For auto team selection use blue alliance comp. codes</p>
+    <button class="submit" [disabled]="competition.invalid" (click)="change()">CHANGE</button>
+    <h3>Current: {{ currentComp }}</h3>
+</div>

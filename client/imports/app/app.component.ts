@@ -10,10 +10,10 @@ import template from './app.component.html';
   selector: 'app',
   template
 })
-export class AppComponent {
-  tasks: Observable<Task[]>;
 
-  constructor() {
-    this.tasks = Tasks.find({}).zone();
-  }
+export class AppComponent {
+  eventSelectionOpen: boolean;
+
+  constructor() {}
+
 }

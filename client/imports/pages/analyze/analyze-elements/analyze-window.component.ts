@@ -12,6 +12,7 @@ import { Matches } from '../../../../../both/collections/matches.collection';
 export class AnalyzeWindowComponent implements OnInit {
 
   matches;
+  competition: string;
 
   rows = [
     {teamNum: "Please click to refresh"}
@@ -37,14 +38,16 @@ export class AnalyzeWindowComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.matches = Matches.find({}).fetch();
+    this.competition = SessionAmplify.get("competition");
+    if (!this.competition) {window.alert("You must set the event.  Do this by clicking the 'Event' link."); return}
+    this.matches = Matches.find({event: this.competition}).fetch();
     if (this.matches.length > 0) {
       this.refresh();
     }
   }
 
   refresh() {
-    this.matches = Matches.find({}).fetch();
+    this.matches = Matches.find({event: this.competition}).fetch();
 
     var teamStats = [];
 

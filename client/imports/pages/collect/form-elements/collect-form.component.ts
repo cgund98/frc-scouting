@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Session } from 'meteor/session';
+// import { SessionAmplify } from 'meteor/SessionAmplify';
 import { MapLayoutComponent } from './map-layout.component';
 import { SetupElementComponent } from './setup-element.component';
 
@@ -81,11 +81,16 @@ export class CollectFormComponent implements OnInit {
 		event.preventDefault();
 		var alert = '';
 		var isError = false;
+        var comp = SessionAmplify.get("competition");
 
 		if (this.teamNum == '??') {
 			isError = true;
 			alert = 'You did not enter a team number.';
 		}
+        if (!comp) {
+            isError = true;
+            alert = 'You need to set an event.  Do so by clicking on the "Event" link.'
+        }
 
 		if (isError) {
 			window.alert(alert);
@@ -104,16 +109,16 @@ export class CollectFormComponent implements OnInit {
 			posNum: this.posNum,
 			color: this.color,
 			totalPickedUp: this.teleop.totalPickedUp,
-      totalPlaced: this.teleop.totalPlaced,
-      climbed: this.teleop.climbed,
+            totalPlaced: this.teleop.totalPlaced,
+            climbed: this.teleop.climbed,
 			runs: this.teleop.runs,
 			autonLineCrossed: this.teleop.autonLineCrossed,
-			event: '2018inmis',
+			event: comp,
 			notes: notes,
 		}
 
 		Matches.insert(match);
-		Session.set('matchNum', this.matchNum + 1);
+		SessionAmplify.set('matchNum', this.matchNum + 1);
 		this.mapLayout.ngOnInit();
 		this.setupComponent.ngOnInit();
 		this.setupLink.nativeElement.click();

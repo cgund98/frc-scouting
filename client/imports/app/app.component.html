@@ -2,6 +2,8 @@
   <nav class="main">
     <a routerLink="/analyze" routerLinkActive="active">Analyze</a>
     <a routerLink="/collect" routerLinkActive="active">Collect</a>
+    <a href="#" (click)="eventSelectionOpen=true">Event</a>
   </nav>
+  <event-selection [(open)]="eventSelectionOpen"></event-selection>
   <router-outlet></router-outlet>
 </div>

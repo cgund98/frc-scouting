@@ -36,7 +36,7 @@ $blue: #22A7F0;
   font-family: Circular !important;
   outline: none !important;
 }
-i { 
+i {
 font-family: 'Material Icons' !important;
 }
 
@@ -57,7 +57,7 @@ a {
 }
 
 
-// Theme 
+// Theme
 nav.main {
   position: absolute;
   top: 3em;
@@ -85,7 +85,7 @@ h4.head {
     margin: 2em .5em;
   }
 }
-h4.subhead { 
+h4.subhead {
   text-align: center;
   font-size: 1rem !important;
   margin: auto;
@@ -120,12 +120,12 @@ h4.subhead {
   }
 }
 
-//forms 
-textarea:hover, 
-input:hover, 
-textarea:active, 
-input:active, 
-textarea:focus, 
+//forms
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
 input:focus,
 button:focus,
 button:active,
@@ -275,7 +275,7 @@ option {
           &.blue {
             background: $blue;
           }
-          &.red { 
+          &.red {
             background: $red;
           }
         }
@@ -369,10 +369,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     -webkit-appearance: none;
     margin: 0;
 }
- 
+
 input[type="number"] {
     -moz-appearance: textfield;
-} 
+}
 
 input[type=checkbox]:checked + label.active {
   background: $dark;
@@ -390,7 +390,7 @@ input[type=checkbox] {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
-*:active, * { outline: none !important; }  
+*:active, * { outline: none !important; }
 *:focus{ -moz-outline-style: none !important; }
 
 // Map Layout Styles
@@ -429,7 +429,7 @@ $field-block-icon-size: 25px;
       img {
         height: $field-block-icon-size;
         width: $field-block-icon-size;
-        margin-top: ($block-size - 6px) / 2 - $field-block-icon-size / 2; 
+        margin-top: ($block-size - 6px) / 2 - $field-block-icon-size / 2;
       }
     }
   }
@@ -466,7 +466,7 @@ $field-block-icon-size: 25px;
     img {
       width: $field-block-icon-size;
       height: $field-block-icon-size;
-      margin-top: ($block-size - 6px) / 2 - $field-block-icon-size / 2; 
+      margin-top: ($block-size - 6px) / 2 - $field-block-icon-size / 2;
     }
   }
 
@@ -716,4 +716,48 @@ prematch-window {
 .line {
   margin: 1em 0;
   border-top: 1px solid #e6e6e6;
+}
+
+.event-selection-wrapper {
+    position: fixed;
+    @include transform(translateX(-50%));
+    left: 50%;
+    top: 200px;
+    text-align: center;
+    width: 340px;
+    border: 1px $dark solid;
+    border-radius: 0px !important;
+    z-index: 101;
+
+    input {
+        border: 0px;
+        border-bottom: 3px solid $green;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    button.submit {
+        background: $green;
+        color: white;
+    }
+
+    button:disabled {
+        opacity: .8;
+    }
+
+    button.remove {
+        background: #EA5444;
+        position: absolute;
+        color: white;
+        right: -.75em;
+        top: -.75em;
+        padding: 0;
+        height: 2.25em;
+        width: 2.25em;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 1.5em;
+        line-height: 2.5em;
+        vertical-align: middle;
+    }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Session } from 'meteor/session';
+// import { SessionAmplify } from 'meteor/SessionAmplify';
 
 import template from './setup-element.component.html';
 
@@ -26,20 +26,20 @@ export class SetupElementComponent {
     });
     this.json = this.json.sort(function(a, b) { return a.match_number - b.match_number });
     this.teamNum = null;
-    if (!Session.get('matchNum')) {
+    if (!SessionAmplify.get('matchNum')) {
       this.matchNum = 1;
     } else {
-      this.matchNum = Session.get('matchNum');
+      this.matchNum = SessionAmplify.get('matchNum');
     }
-    if (!Session.get('posNum')) {
+    if (!SessionAmplify.get('posNum')) {
       this.posNum = 1;
     } else {
-      this.posNum = Session.get('posNum');
+      this.posNum = SessionAmplify.get('posNum');
     }
-    if (!Session.get('color')) {
+    if (!SessionAmplify.get('color')) {
       this.color = "blue";
     } else {
-      this.color = Session.get('color');
+      this.color = SessionAmplify.get('color');
     }
     if (this.matchNum > 0 && this.matchNum < this.json.length && this.posNum < 4) {
       this.updateTeamNumFromMatchNum();
@@ -51,7 +51,7 @@ export class SetupElementComponent {
 
   updateMatchNum(event: any) {
     this.matchNum = parseInt(event.target.value);
-    Session.set('matchNum', this.matchNum);
+    SessionAmplify.set('matchNum', this.matchNum);
     if (this.matchNum > 0 && this.matchNum < this.json.length && this.posNum < 4) {
       this.updateTeamNumFromMatchNum();
     // console.log("Match #", this.matchNum);
@@ -64,7 +64,7 @@ export class SetupElementComponent {
   }
   updatePosNum(event: any) {
     this.posNum = parseInt(event.target.value);
-    Session.set('posNum', this.posNum);
+    SessionAmplify.set('posNum', this.posNum);
     if (this.matchNum > 0 && this.matchNum < this.json.length && this.posNum < 4) {
       this.updateTeamNumFromMatchNum();
     // console.log("Match #", this.matchNum);
@@ -73,7 +73,7 @@ export class SetupElementComponent {
   }
   updateColor() {
     this.color = ((this.color == "blue") ? "red" : "blue");
-    Session.set('color', this.color);
+    SessionAmplify.set('color', this.color);
     if (this.matchNum > 0 && this.matchNum < this.json.length && this.posNum < 4) {
       this.updateTeamNumFromMatchNum();
     // console.log("Match #", this.matchNum);

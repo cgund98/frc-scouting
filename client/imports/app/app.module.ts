@@ -7,6 +7,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { routes } from './app.routes';
 import { CollectPageModule } from '../pages/collect/collect-page.module';
 import { AnalyzePageModule } from '../pages/analyze/analyze-page.module';
+import { MiscModule } from '../misc/misc.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { AnalyzePageModule } from '../pages/analyze/analyze-page.module';
     RouterModule.forRoot(routes),
     CollectPageModule,
     AnalyzePageModule,
+    MiscModule,
   ],
   declarations: [
     AppComponent,
