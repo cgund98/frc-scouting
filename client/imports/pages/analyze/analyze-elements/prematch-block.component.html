@@ -1,6 +1,7 @@
 <div (click)="refresh()">
 <div class="num-wrapper">
-  <input class="number noselect team-number" type="number" name="teamNum" value="{{ teamNum }}" (keyup)="updateTeamNum($event)">
+  <input class="number noselect team-number" type="number" name="teamNum" value="{{ teamNum }}"
+  [class.blue]="color=='blue'" [class.red]="color=='red'" (keyup)="updateTeamNum($event)"/>
   <p>TEAM #</p>
 </div>
 

@@ -3,7 +3,7 @@
 
   <analyze-window [class.hidden]="!analysisTab"></analyze-window>
   <!-- <heatmap [class.hidden]="analysisTab"></heatmap> -->
-  <prematch-window [class.hidden]="analysisTab"></prematch-window>
+  <prematch-window #prematch [class.hidden]="analysisTab"></prematch-window>
   <div class="button-wrapper">
     <button (click)="changeTab()" type="button">Switcharooni</button>
   </div>

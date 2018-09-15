@@ -660,6 +660,12 @@ prematch-window {
       border-bottom: 3px solid $green;
       font-size: 1.5em;
       font-weight: normal;
+      &.blue {
+          border-bottom: 3px solid $blue;
+      }
+      &.red {
+          border-bottom: 3px solid $red;
+      }
     }
     p {
       text-align: center;

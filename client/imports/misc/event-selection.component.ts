@@ -10,7 +10,7 @@ import template from './event-selection.component.html';
     template
 })
 
-export class EventSelectionComponent implements ngOnInit {
+export class EventSelectionComponent implements OnInit {
 
     openValue: boolean = false;
     @Output() openChange = new EventEmitter();

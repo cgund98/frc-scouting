@@ -14,6 +14,7 @@ export class PrematchBlockComponent implements OnInit {
 
   matches;
   @Input() teamNum: number;
+  @Input() color: string;
 
   @Output() update = new EventEmitter();
 
@@ -21,7 +22,7 @@ export class PrematchBlockComponent implements OnInit {
   teleopRows;
 
   autonColumns = [
-  { name: '<p>Auton</p>', 
+  { name: '<p>Auton</p>',
     prop: 'propName', width: 85 },
   { name: 'Fails', prop: 'fails', width: 75 },
   { name: 'Singles', prop: 'singles', width: 75 },

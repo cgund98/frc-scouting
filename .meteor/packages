@@ -22,3 +22,5 @@ angular2-compilers
 jquery
 session
 amplify
+http
+deanius:promise
