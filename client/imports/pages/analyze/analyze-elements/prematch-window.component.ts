@@ -21,10 +21,12 @@ export class PrematchWindowComponent implements OnInit {
 
     @ViewChild('blueBlock1') blueBlock1: PrematchBlockComponent;
 
-    async ngOnInit() {
+    ngOnInit() {
     }
 
     async getEventData() {
+        // Get match data:
+		// Checks to see if there is an entry in local db, if not gets it from TBA
         let event = SessionAmplify.get('competition');
         let eventQuery = Competitions.findOne({name: event});
         this.json = eventQuery ? eventQuery.matches : await Meteor.callPromise('getEventData', event);
@@ -38,6 +40,7 @@ export class PrematchWindowComponent implements OnInit {
     }
 
     updateMatchNum(event: any) {
+        // Update match # from input and update blocks
         this.matchNum = parseInt(event.target.value);
         if (this.matchNum > 0 && this.matchNum < this.json.length) {
             this.updateBlocks();
@@ -46,6 +49,7 @@ export class PrematchWindowComponent implements OnInit {
     }
 
     updateBlocks() {
+        // Update team #s on each of the blocks
         match = this.json[this.matchNum - 1];
 
         var blueTeams = match.alliances.blue.team_keys.map(function(e) {

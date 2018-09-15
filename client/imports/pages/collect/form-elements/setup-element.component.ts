@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { SessionAmplify } from 'meteor/SessionAmplify';
 
 import template from './setup-element.component.html';
 

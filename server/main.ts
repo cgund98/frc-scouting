@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http'
 
+import { Competitions } from '../both/collections/competitions.collection';
+
 Meteor.methods({
     'getEventData'(event:string) {
         // Get matches for event from the Blue Alliance API
@@ -18,6 +20,10 @@ Meteor.methods({
         }
     }
 })
+
+Meteor.publish('competitions', function competitionsPublication() {
+    return Competitions.find({});
+});
 
 Meteor.startup(() => {
   // code to run on server at startup
