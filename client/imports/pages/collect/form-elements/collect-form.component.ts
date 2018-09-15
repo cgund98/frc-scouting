@@ -30,6 +30,7 @@ export class CollectFormComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit() {
+        Meteor.subscribe('matches');
 		this.isAuton = this.stageInput.nativeElement.checked;
 	}
 

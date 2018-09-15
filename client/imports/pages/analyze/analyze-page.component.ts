@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PrematchWindowComponent } from './analyze-elements/prematch-window.component';
 
@@ -19,6 +20,7 @@ export class AnalyzePageComponent implements OnInit {
     @ViewChild('prematch') prematchWindow: PrematchWindowComponent;
 
     ngOnInit() {
+        Meteor.subscribe('matches');
         this.analysisTab = true;
         var i = 0;
         while(true) {

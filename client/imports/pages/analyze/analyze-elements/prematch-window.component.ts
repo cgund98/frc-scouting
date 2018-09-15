@@ -22,6 +22,8 @@ export class PrematchWindowComponent implements OnInit {
     @ViewChild('blueBlock1') blueBlock1: PrematchBlockComponent;
 
     ngOnInit() {
+        Meteor.subscribe('matches');
+        Meteor.subscribe('competitions');
     }
 
     async getEventData() {

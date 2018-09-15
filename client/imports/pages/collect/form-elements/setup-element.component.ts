@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 import template from './setup-element.component.html';
@@ -21,6 +22,7 @@ export class SetupElementComponent {
 	update = new EventEmitter();
 
 	async ngOnInit() {
+		Meteor.subscribe('competitions');
 		// this.json = require('../../../../../test.json');
 		await this.getEventData();
 		this.teamNum = null;
@@ -46,7 +48,7 @@ export class SetupElementComponent {
 		if (!eventQuery) Competitions.insert({name: event, matches: this.json});
 		console.log(eventQuery);
 		this.json = this.json.filter(function (e) {
-		return e.comp_level == 'qm';
+			return e.comp_level == 'qm';
 		});
 		this.json = this.json.sort(function(a, b) { return a.match_number - b.match_number });
 	}

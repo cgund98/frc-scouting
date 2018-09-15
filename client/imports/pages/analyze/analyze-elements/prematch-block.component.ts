@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Component, OnInit, Input, Output, EventEmitter,
          OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 
@@ -37,6 +38,7 @@ export class PrematchBlockComponent implements OnInit {
   ];
 
   ngOnInit() {
+    Meteor.subscribe('matches');
     this.matches = Matches.find({}).fetch();
     if (this.matches.length > 0) {
       this.refresh();

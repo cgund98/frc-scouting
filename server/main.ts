@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http'
 
 import { Competitions } from '../both/collections/competitions.collection';
+import { Matches } from '../both/collections/matches.collection';
 
 Meteor.methods({
     'getEventData'(event:string) {
@@ -23,6 +24,9 @@ Meteor.methods({
 
 Meteor.publish('competitions', function competitionsPublication() {
     return Competitions.find({});
+});
+Meteor.publish('matches', function matchesPublication() {
+    return Matches.find({});
 });
 
 Meteor.startup(() => {

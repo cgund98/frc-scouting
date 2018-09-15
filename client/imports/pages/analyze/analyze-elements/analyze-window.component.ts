@@ -37,14 +37,13 @@ export class AnalyzeWindowComponent implements OnInit {
       { name: 'Matches', prop: 'matchesPlayed', width: 100 },
   ];
 
-  ngOnInit() {
-    this.competition = SessionAmplify.get("competition");
-    if (!this.competition) {window.alert("You must set the event.  Do this by clicking the 'Event' link."); return}
-    this.matches = Matches.find({event: this.competition}).fetch();
-    if (this.matches.length > 0) {
-      this.refresh();
+    ngOnInit() {
+        Meteor.subscribe('matches');
+        this.competition = SessionAmplify.get("competition");
+        if (!this.competition) window.alert("You must set the event.  Do this by clicking the 'Event' link."); return
+        this.matches = Matches.find({event: this.competition}).fetch();
+        if (this.matches.length > 0) this.refresh();
     }
-  }
 
   refresh() {
     this.matches = Matches.find({event: this.competition}).fetch();

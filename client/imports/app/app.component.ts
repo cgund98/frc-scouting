@@ -46,7 +46,8 @@ export class AppComponent implements OnInit {
         }
         if (true) {
             const cHandle = Meteor.subscribe('competitions');
-            this.ready = waitForData([cHandle]).then(function() {
+            const mHandle = Meteor.subscribe('matches')
+            this.ready = waitForData([cHandle, mHandle]).then(function() {
                 var url = this.router.url;
                 console.log(url);
                 let navUrl = url == '/' ? '/collect' : '/';

@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Component, OnInit, ViewChild, ElementRef, } from '@angular/core';
 
 import template from './heatmap.component.html';
@@ -19,6 +20,7 @@ export class HeatmapComponent implements OnInit {
   box2Count;
 
   ngOnInit() {
+    Meteor.subscribe('matches');
     this.box1Count=0;
     this.box2Count=0;
     this.matches = Matches.find({}).fetch();
@@ -35,7 +37,7 @@ export class HeatmapComponent implements OnInit {
       match = this.matches[i];
       box1Id = this.box1.nativeElement.id;
       box2Id = this.box2.nativeElement.id;
-      
+
 
       for (var j=0; j < match.runs.length; j++) {
         run = match.runs[j];
