@@ -5,7 +5,6 @@ import { Competitions } from '../both/collections/competitions.collection';
 import { Matches } from '../both/collections/matches.collection';
 
 const clientDir = Meteor.absolutePath + "/../frc-scouting-visualize";
-// const simpleGit = require('simple-git')(clientDir); // Set in settings.json
 const fs = require('fs');
 
 Meteor.methods({
@@ -54,12 +53,13 @@ SyncedCron.add({
                 console.log(err);
             }
         });
+        let stdoutHandler = (stdout) => { console.log(stdout)};
+        let stderrHandler = (stderr) => { console.log(stderr)};
+
+        Exec.run(clientDir + "/auto-deploy.sh " + clientDir, stdoutHandler, stderrHandler);
     }
 });
 
 Meteor.startup(() => {
     SyncedCron.start();
-    // simpleGit.status((status) => {console.log(status)})
-
-    console.log(clientDir)
 });
