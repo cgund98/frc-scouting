@@ -10,14 +10,14 @@ import template from './map-layout.component.html';
 export class MapLayoutComponent implements OnInit {
 
   @Input() isAuton: boolean;
-  totalPickedUp;
-  totalPlaced;
-  climbed;
-  defendedAgainst;
-  missedShot;
-  runs;
-  events;
-  lineCrossed;
+  totalPickedUp: number;
+  totalPlaced: number;
+  climbed: boolean;
+  defendedAgainst: boolean;
+  missedShot: boolean;
+  runs: Array<any>;
+  events: Array<any>;
+  lineCrossed: boolean;
 
   @Output()
   update = new EventEmitter();
@@ -144,7 +144,7 @@ export class MapLayoutComponent implements OnInit {
     if (lastEvent.type == 'pickup') { // Last event was a pickup
       this.totalPickedUp -= 1;
 
-    } else if (lastEvent.type == 'place') { // Last event was a place 
+    } else if (lastEvent.type == 'place') { // Last event was a place
       this.totalPlaced -= 1;
       this.runs.pop(); // Remove the last run
       console.log('Runs: ', this.runs);

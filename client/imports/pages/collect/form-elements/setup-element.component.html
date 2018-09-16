@@ -6,7 +6,7 @@
 			<p>MATCH #</p>
 		</div>
 		<div class="num-wrapper">
-			<input class="number noselect team-number" type="number" name="teamNum" value="{{ teamNum }}" (keyup)="updateTeamNum($event)">
+			<input class="number noselect team-number" type="number" name="teamNum" [value]="teamNum" (keyup)="updateTeamNum($event)">
 			<p>TEAM #</p>
 		</div>
 		<div class="num-wrapper toggle-wrapper noselect blue">

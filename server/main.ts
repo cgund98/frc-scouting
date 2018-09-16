@@ -16,7 +16,7 @@ Meteor.methods({
         try {
             return HTTP.call('GET', url, options).data;
         } catch (err) {
-            window.alert('Can\'t pull match data, network error');
+            console.log('Can\'t pull match data, network error');
             return [];
         }
     }

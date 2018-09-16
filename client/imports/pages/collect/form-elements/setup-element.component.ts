@@ -17,16 +17,16 @@ export class SetupElementComponent {
 	@Input() posNum: number;
 	@Input() color: string;
 	json: Array<any>; // Array of matches from TBA
+	sub: any; // subscription
 
 	@Output()
 	update = new EventEmitter();
 
 	async ngOnInit() {
-		Meteor.subscribe('competitions');
+		this.sub = Meteor.subscribe('competitions');
 		// this.json = require('../../../../../test.json');
 		await this.getEventData();
 		this.teamNum = null;
-
 		let getSesVar = SessionAmplify.get('matchNum')
 		this.matchNum = getSesVar ? getSesVar : 1
 		getSesVar = SessionAmplify.get('posNum')
@@ -46,7 +46,7 @@ export class SetupElementComponent {
 		let eventQuery = Competitions.findOne({name: event});
 		this.json = eventQuery ? eventQuery.matches : await Meteor.callPromise('getEventData', event);
 		if (!eventQuery) Competitions.insert({name: event, matches: this.json});
-		console.log(eventQuery);
+		// console.log(eventQuery);
 		this.json = this.json.filter(function (e) {
 			return e.comp_level == 'qm';
 		});

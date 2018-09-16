@@ -67,18 +67,16 @@ export class PrematchBlockComponent implements OnInit {
     var teamStats = this.getTeamStats();
 
     if (teamStats.missing) {
-      autonRows = [
+      this.autonRows = [
       { propName: 'Missing!' },
       { propName: 'Missing!' },
       { propName: 'Missing!' },
       ];
-      teleopRows = [
+      this.teleopRows = [
       { location: 'Missing!' },
       { location: 'Missing!' },
       { location: 'Missing!' },
       ];
-      this.autonRows = autonRows;
-      this.teleopRows = teleopRows;
       return;
     }
 

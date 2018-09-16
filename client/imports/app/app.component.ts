@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     constructor(private router: Router) {}
 
     ngOnInit() {
+        var url = this.router.url;
+        if (url == '/collect') this.router.navigate(['']);
         function checkForData(router) {
             console.log('Checking...');
             if (Meteor.user()) {
@@ -46,13 +48,8 @@ export class AppComponent implements OnInit {
         }
         if (true) {
             const cHandle = Meteor.subscribe('competitions');
-            const mHandle = Meteor.subscribe('matches')
+            const mHandle = Meteor.subscribe('matches');
             this.ready = waitForData([cHandle, mHandle]).then(function() {
-                var url = this.router.url;
-                console.log(url);
-                let navUrl = url == '/' ? '/collect' : '/';
-                this.router.navigateByUrl(navUrl, {skipLocationChange: true}).then(()=>
-                this.router.navigate([url]));
             }.bind(this));
         }
     }

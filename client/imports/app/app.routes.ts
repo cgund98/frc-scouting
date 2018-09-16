@@ -5,5 +5,6 @@ import { AnalyzePageComponent } from '../pages/analyze/analyze-page.component';
 
 export const routes: Route[] = [
 	{ path: 'collect', component: CollectPageComponent },
-  { path: 'analyze', component: AnalyzePageComponent },
+  	{ path: 'analyze', component: AnalyzePageComponent },
+	{ path: '', children: []}
 ];
