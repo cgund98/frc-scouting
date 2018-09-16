@@ -6,11 +6,15 @@ This is the local version of FRC Scouting.  The app is a UI/UX focused scouting 
 
 1.  Collection page: 
     1.  Automatic team selection:  Every time you select a competition for the first time, the app needs an internet connection, and will pull event data from The Blue Alliance.  Afterwards, the data will be stored locally and no connection is necessary.  Team # will automatically be determined from the other variables, so setup will need to happen once and will automatically select info for the next match!
+    ![alt text](readme/autoselect.gif)
     2.  Intuitive Collection:  The data collection is done through an intuitive map.  You essentially click where the robot interacts with the field, toggle certain buttons if necessary, and that's it!
+    ![alt text](readme/collect.gif)
 
 2.  Analysis page:
     1.  Simple table with sortable categories
+    ![alt text](readme/table.png)
     2.  Prematch window (with automatic team selection):  Simply set the match # and it will display important data for each team.  Incredibly useful for prematch strategizing
+    ![alt text](readme/prematch.png)
 
 3.  While this app is run locally, there is a second version of the app (only the analysis part) that runs on Github Pages.  That means that anyone can analyze the data on any machine!  Note that for the local and gh pages to work, you will need to have the host machine connected to the internet.  See [here](https://github.com/cgund98/frc-scouting-visualize/) for more info
 
