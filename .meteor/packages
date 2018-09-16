@@ -23,3 +23,5 @@ session
 amplify
 http
 deanius:promise
+littledata:synced-cron
+ostrio:meteor-root

@@ -21,8 +21,10 @@
     "meteor-node-stubs": "^0.3.2",
     "meteor-rxjs": "^0.4.8",
     "ngx-pagination": "^3.2.0",
+    "path": "^0.12.7",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^5.5.6",
+    "simple-git": "^1.96.0",
     "thebluealliance": "^1.2.3",
     "zone.js": "^0.8.20"
   },

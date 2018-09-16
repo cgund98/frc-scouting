@@ -4,6 +4,10 @@ import { HTTP } from 'meteor/http'
 import { Competitions } from '../both/collections/competitions.collection';
 import { Matches } from '../both/collections/matches.collection';
 
+const clientDir = Meteor.absolutePath + "/../frc-scouting-visualize";
+// const simpleGit = require('simple-git')(clientDir); // Set in settings.json
+const fs = require('fs');
+
 Meteor.methods({
     'getEventData'(event:string) {
         // Get matches for event from the Blue Alliance API
@@ -29,6 +33,33 @@ Meteor.publish('matches', function matchesPublication() {
     return Matches.find({});
 });
 
+SyncedCron.add({
+    // Cron job to sync gh pages version
+    name: 'Sync data with gh pages version',
+    schedule: function(parser) {
+    // parser is a later.parse object
+        return parser.text('every 10 minutes');
+    },
+    job: function() {
+        // return "yeet";
+        let comps = Competitions.find({}).fetch();
+        let matches = Matches.find({}).fetch();
+        fs.writeFile(clientDir + "/src/assets/data/competitions.json", JSON.stringify(comps), function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+        fs.writeFile(clientDir + "/src/assets/data/matches.json", JSON.stringify(matches), function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+    }
+});
+
 Meteor.startup(() => {
-  // code to run on server at startup
+    SyncedCron.start();
+    // simpleGit.status((status) => {console.log(status)})
+
+    console.log(clientDir)
 });
